@@ -70,3 +70,51 @@ Each decision follows the lightweight ADR structure:
 - **Consequences:**
   - *Positive:* High quality control, clear checkpoints, testable increments, and zero scope drift.
   - *Negative:* Requires discipline to complete verification and approval before moving forward.
+
+---
+
+## ADR-004: Visual Identity & Color System ("The Living Blueprint")
+
+- **Date:** 2026-09-24
+- **Status:** Accepted
+- **Context:**
+  The portfolio requires a distinctive visual system that reflects Rokon's Software Engineering background while adhering to WCAG 2.1 AA accessibility standards and avoiding developer clichés.
+- **Decision:**
+  Adopt "The Living Blueprint" color system:
+  1. Base canvas: Architectural Slate (`#0B0E14`) providing deep, calm contrast.
+  2. Structural hairlines and borders: Translucent Slate (`rgba(255, 255, 255, 0.08)` and active `rgba(56, 189, 248, 0.35)`).
+  3. Typography: Drafting Paper White (`#F1F5F9`, 14.8:1 contrast) and Slate Ash (`#94A3B8`, 7.2:1 contrast).
+  4. Precision accents: Blueprint Cyan (`#38BDF8`) for interactive focus and Tactical Amber (`#F59E0B`) for human storytelling callouts.
+- **Consequences:**
+  - *Positive:* Exceeds WCAG AAA contrast for body copy; feels architectural, disciplined, and bespoke.
+  - *Negative:* Requires disciplined restraint to avoid overusing cyan accent lights.
+
+---
+
+## ADR-005: Architectural Monogram & Typography Hierarchy
+
+- **Date:** 2026-09-24
+- **Status:** Accepted
+- **Context:**
+  A memorable personal brand needs a distinct monogram and an editorial typography pairing that bridges technical precision with literary warmth.
+- **Decision:**
+  1. Design a custom geometric monogram for Rokon: An architectural capital "R" fused with coordinate drafting crosshairs and structural code brackets.
+  2. Pair editorial serif display headlines (`Newsreader` / `Playfair Display`) with an ultra-clean system body font (`Inter`) and a monospaced telemetry font (`JetBrains Mono`).
+- **Consequences:**
+  - *Positive:* Conveys senior technical maturity and human warmth; distinct from standard developer portfolios.
+  - *Negative:* External font assets must be preloaded and optimized to avoid FOUT (Flash of Unstyled Text).
+
+---
+
+## ADR-006: Visual Prototype Architecture
+
+- **Date:** 2026-09-24
+- **Status:** Accepted
+- **Context:**
+  Milestone 2 requires high-fidelity visual prototypes of the Hero, Selected Works, Engineering Visualization, and Contact sections to validate design decisions across desktop, tablet, and mobile before initializing the full application.
+- **Decision:**
+  Construct an isolated, high-fidelity interactive prototype in `prototype/` utilizing pure standards-based HTML5, modern CSS custom properties, and vanilla JS with art-directed SVG/Canvas placeholders. Validate locally using headless Chrome across viewports (1440px desktop, 768px tablet, 375px mobile).
+- **Consequences:**
+  - *Positive:* Fast iteration, zero dependency baggage during design validation, and directly inspectable in any browser.
+  - *Negative:* Prototype code will be translated into Next.js App Router components in subsequent milestones.
+

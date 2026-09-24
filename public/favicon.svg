@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Architectural Slate Background -->
+  <rect width="64" height="64" rx="12" fill="#0B0E14"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="11.5" stroke="#38BDF8" stroke-opacity="0.35"/>
+  
+  <!-- Architectural Corner Crosshairs -->
+  <path d="M6 14H14M10 10V18" stroke="#38BDF8" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M50 14H58M54 10V18" stroke="#38BDF8" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M6 50H14M10 46V54" stroke="#38BDF8" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M50 50H58M54 46V54" stroke="#38BDF8" stroke-width="1.2" stroke-linecap="round"/>
+  
+  <!-- Monogram R - Precision Architectural Geometry -->
+  <!-- Vertical Stem -->
+  <path d="M22 18V46" stroke="#F1F5F9" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Top Loop -->
+  <path d="M22 18H33C38.5 18 42 21.5 42 27C42 32.5 38.5 35.5 33 35.5H22" stroke="#F1F5F9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Diagonal Leg -->
+  <path d="M31 35.5L42 46" stroke="#38BDF8" stroke-width="3.5" stroke-linecap="round"/>
+  
+  <!-- Precision Drafting Focal Dot -->
+  <circle cx="33" cy="27" r="2" fill="#38BDF8"/>
+</svg>

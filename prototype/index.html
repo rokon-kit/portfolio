@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Md. Rokonuzzaman — The Living Blueprint | Full-Stack Software Engineer</title>
+  <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+  
+  <!-- Typography: Newsreader (Editorial Serif) + Inter (Sans) + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="blueprint-theme">
+
+  <!-- ========================================================= -->
+  <!-- NAVIGATION: THE PRECISION RAIL -->
+  <!-- ========================================================= -->
+  <header class="precision-rail">
+    <div class="rail-container">
+      <!-- Monogram & Identity -->
+      <a href="#hero" class="brand-anchor">
+        <div class="monogram-badge">
+          <svg viewBox="0 0 32 32" fill="none" class="brand-glyph">
+            <rect width="32" height="32" rx="6" fill="#0B0E14" stroke="#38BDF8" stroke-opacity="0.4"/>
+            <path d="M10 9V23" stroke="#F1F5F9" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M10 9H17C19.8 9 21.5 10.8 21.5 13.5C21.5 16.2 19.8 18 17 18H10" stroke="#F1F5F9" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M15.5 18L21.5 23" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="17" cy="13.5" r="1.2" fill="#38BDF8"/>
+          </svg>
+          <div class="brand-meta">
+            <span class="brand-name">MD. ROKONUZZAMAN</span>
+            <span class="brand-title">FULL-STACK ENGINEER</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Telemetry Coordinates (Desktop) -->
+      <div class="rail-telemetry">
+        <span class="telemetry-item"><span class="coord-label">LOC:</span> DHAKA 23.81°N 90.41°E</span>
+        <span class="telemetry-separator">/</span>
+        <span class="telemetry-item"><span class="coord-label">SYS:</span> SPEC V2.4-PROTOTYPE</span>
+      </div>
+
+      <!-- Navigation Links & Status -->
+      <div class="rail-actions">
+        <nav class="desktop-nav" aria-label="Main Navigation">
+          <a href="#hero" class="nav-item active"><span class="nav-num">01</span> Overview</a>
+          <a href="#selected-works" class="nav-item"><span class="nav-num">02</span> Works</a>
+          <a href="#systems-topology" class="nav-item"><span class="nav-num">03</span> Architecture</a>
+          <a href="#contact-dossier" class="nav-item"><span class="nav-num">04</span> Contact</a>
+        </nav>
+        
+        <div class="status-indicator" title="Open to full-stack engineering roles & collaborations">
+          <span class="status-dot"></span>
+          <span class="status-text">AVAILABLE</span>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
+          <span class="toggle-bar"></span>
+          <span class="toggle-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <span class="drawer-label">// NAVIGATION DOCK</span>
+      <button class="drawer-close" id="drawerCloseBtn">CLOSE [X]</button>
+    </div>
+    <nav class="drawer-links">
+      <a href="#hero" class="drawer-item"><span class="nav-num">01</span> Overview & Blueprint</a>
+      <a href="#selected-works" class="drawer-item"><span class="nav-num">02</span> Selected Works (Dossiers)</a>
+      <a href="#systems-topology" class="drawer-item"><span class="nav-num">03</span> Systems Topology Graph</a>
+      <a href="#contact-dossier" class="drawer-item"><span class="nav-num">04</span> Contact & Direct Connection</a>
+    </nav>
+    <div class="drawer-footer">
+      <p class="drawer-location">Dhaka, Bangladesh · BST (UTC+6)</p>
+      <a href="mailto:rokonrabbi21@gmail.com" class="drawer-email">rokonrabbi21@gmail.com</a>
+    </div>
+  </div>
+
+  <main class="blueprint-canvas">
+
+    <!-- ========================================================= -->
+    <!-- SECTION 1 & 2: PROTOTYPE HERO (DESKTOP & MOBILE INTEGRATED) -->
+    <!-- ========================================================= -->
+    <section class="blueprint-section hero-section" id="hero">
+      <div class="section-container">
+        
+        <!-- Architectural Header Ribbon -->
+        <div class="blueprint-ribbon">
+          <div class="ribbon-tag">
+            <span class="blueprint-bracket">[</span>
+            <span class="ribbon-text">ARCHITECTURAL SPECIFICATION 2026 // PERSONAL DOSSIER</span>
+            <span class="blueprint-bracket">]</span>
+          </div>
+          <div class="ribbon-coords">EST. 2018 · NSTU SOFTWARE ENGINEERING · DHAKA, BD</div>
+        </div>
+
+        <div class="hero-split-grid">
+          <!-- Left Column: The Editorial Narrative -->
+          <div class="hero-narrative-col">
+            <div class="hero-eyebrow">
+              <span class="eyebrow-dash">—</span>
+              <span class="eyebrow-text">THE HUMAN SIDE OF ENGINEERING</span>
+            </div>
+
+            <h1 class="hero-headline">
+              Architecting <span class="headline-italic">resilient</span> systems where robust code serves <span class="headline-highlight">human purpose</span>.
+            </h1>
+
+            <p class="hero-summary">
+              I am <strong>Md. Rokonuzzaman</strong>, a full-stack software engineer based in Dhaka, Bangladesh. With a formal Software Engineering degree from NSTU, I build end-to-end digital architectures—from type-safe enterprise backends in <strong>Java & Spring Boot</strong> to precision frontends in <strong>TypeScript, React & Next.js</strong>.
+            </p>
+
+            <!-- Human Engineering Ethos Card -->
+            <div class="human-ethos-box">
+              <div class="corner-crosshair top-left"></div>
+              <div class="corner-crosshair top-right"></div>
+              <div class="corner-crosshair bottom-left"></div>
+              <div class="corner-crosshair bottom-right"></div>
+              <div class="ethos-header">
+                <span class="ethos-icon">❖</span>
+                <span class="ethos-title">CORE ENGINEERING ETHOS</span>
+              </div>
+              <p class="ethos-quote">
+                "In every experience, from the grandest to the smallest, lies an opportunity to learn and grow."
+              </p>
+              <div class="ethos-footer">
+                <span>FOCUS: SCALABLE ARCHITECTURE · EMPATHETIC DESIGN · ZERO BLOAT</span>
+              </div>
+            </div>
+
+            <!-- Action Controls -->
+            <div class="hero-cta-group">
+              <a href="#selected-works" class="btn-primary">
+                <span class="btn-label">EXPLORE DOSSIERS</span>
+                <span class="btn-arrow">→</span>
+              </a>
+              <a href="https://drive.google.com/file/d/1bnyD5ny00ZIAhz9msLT40ACmzdwyeXQW/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                <span class="btn-label">DOWNLOAD RESUME</span>
+                <span class="btn-icon">↓</span>
+              </a>
+              <a href="#contact-dossier" class="btn-ghost">
+                <span class="btn-label">GET IN TOUCH</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Signature 3D Isometric Architectural Visualization -->
+          <div class="hero-visual-col">
+            <div class="blueprint-viewport-frame" id="heroViewport">
+              <div class="viewport-hud-header">
+                <div class="hud-status">
+                  <span class="hud-dot"></span>
+                  <span class="hud-title">ISOMETRIC 3D STRUCTURE // ENGINE: R3F SIMULATOR</span>
+                </div>
+                <div class="hud-controls">
+                  <span class="hud-badge">60 FPS</span>
+                  <span class="hud-badge active-layer" id="activeLayerTag">LAYER: ALL</span>
+                </div>
+              </div>
+
+              <!-- Interactive 3D Architecture Canvas / Visual Prototype -->
+              <div class="viewport-canvas-container" id="isometricCanvasContainer">
+                <canvas id="isometricBlueprintCanvas" width="560" height="460"></canvas>
+                
+                <!-- Layer Annotation Tooltips -->
+                <div class="blueprint-callout callout-frontend" style="top: 22%; left: 10%;">
+                  <span class="callout-node"></span>
+                  <span class="callout-line"></span>
+                  <span class="callout-badge">L3: CLIENT INTERFACE (REACT/TS)</span>
+                </div>
+                <div class="blueprint-callout callout-services" style="top: 50%; right: 8%;">
+                  <span class="callout-node"></span>
+                  <span class="callout-line"></span>
+                  <span class="callout-badge">L2: SPRING BOOT / REST APIS</span>
+                </div>
+                <div class="blueprint-callout callout-data" style="bottom: 18%; left: 15%;">
+                  <span class="callout-node"></span>
+                  <span class="callout-line"></span>
+                  <span class="callout-badge">L1: POSTGRESQL / PERSISTENCE</span>
+                </div>
+              </div>
+
+              <!-- Interactive Layer Scrub Controls -->
+              <div class="viewport-hud-footer">
+                <span class="hud-label">SIMULATION LAYERS:</span>
+                <div class="layer-pills" role="tablist">
+                  <button class="layer-btn active" data-layer="all">FULL STACK</button>
+                  <button class="layer-btn" data-layer="frontend">FRONTEND</button>
+                  <button class="layer-btn" data-layer="backend">BACKEND</button>
+                  <button class="layer-btn" data-layer="database">DATABASE</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Architectural Telemetry Bar -->
+            <div class="hero-telemetry-grid">
+              <div class="telemetry-metric-tile">
+                <span class="tile-number">15+</span>
+                <span class="tile-label">PROJECTS BUILT</span>
+              </div>
+              <div class="telemetry-metric-tile">
+                <span class="tile-number">3.34</span>
+                <span class="tile-label">CGPA // B.SC. SWE (NSTU)</span>
+              </div>
+              <div class="telemetry-metric-tile">
+                <span class="tile-number">39</span>
+                <span class="tile-label">GITHUB REPOSITORIES</span>
+              </div>
+              <div class="telemetry-metric-tile">
+                <span class="tile-number">100%</span>
+                <span class="tile-label">AUTHENTIC DATA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 3: PROTOTYPE SELECTED-WORK PRESENTATION ("SYSTEM DOSSIERS") -->
+    <!-- ========================================================= -->
+    <section class="blueprint-section works-section" id="selected-works">
+      <div class="section-container">
+        
+        <!-- Section Header with Blueprint Hairlines -->
+        <div class="section-header-block">
+          <div class="section-index-badge">
+            <span class="index-num">02</span>
+            <span class="index-title">SELECTED WORKS // SYSTEM DOSSIERS</span>
+          </div>
+          <h2 class="section-headline">
+            Production-grade systems engineered for <span class="headline-italic">scalability</span> and real-world utility.
+          </h2>
+          <p class="section-intro">
+            Every project represents an intentional architectural solution to human challenges—avoiding superficial templates in favor of structured data models, type safety, and measured user impact.
+          </p>
+        </div>
+
+        <!-- Dossiers Stack -->
+        <div class="dossiers-stack">
+
+          <!-- DOSSIER 01: Social Volunteering Platform -->
+          <article class="system-dossier-card" id="dossier-volunteering">
+            <div class="corner-crosshair top-left"></div>
+            <div class="corner-crosshair top-right"></div>
+            <div class="corner-crosshair bottom-left"></div>
+            <div class="corner-crosshair bottom-right"></div>
+
+            <div class="dossier-grid">
+              <!-- Left: Specifications & Narrative -->
+              <div class="dossier-specs-col">
+                <div class="dossier-header-meta">
+                  <span class="sys-code">SYSTEM 01 // CIVIC TECH</span>
+                  <span class="sys-status live-status">DEPLOYED ARCHITECTURE</span>
+                </div>
+
+                <h3 class="dossier-title">A Community-Driven Social Volunteering Platform</h3>
+
+                <!-- Tech Tags -->
+                <div class="tech-stack-pills">
+                  <span class="tech-pill">Spring Boot</span>
+                  <span class="tech-pill">React</span>
+                  <span class="tech-pill">PostgreSQL</span>
+                  <span class="tech-pill">Spring Security</span>
+                  <span class="tech-pill">JWT</span>
+                  <span class="tech-pill">Tailwind CSS</span>
+                </div>
+
+                <!-- Problem / Solution Breakdown -->
+                <div class="challenge-solution-grid">
+                  <div class="cs-box problem-box">
+                    <span class="cs-label">HUMAN CHALLENGE</span>
+                    <p class="cs-text">Grassroots disaster relief and community aid struggle with chaotic communication, duplicated volunteer signups, and untracked emergency requests during critical windows.</p>
+                  </div>
+                  <div class="cs-box solution-box">
+                    <span class="cs-label">ENGINEERING ARCHITECTURE</span>
+                    <p class="cs-text">Engineered a relational event coordination platform with strict Role-Based Access Control (RBAC), transactional volunteer registrations in PostgreSQL, and stateless JWT auth.</p>
+                  </div>
+                </div>
+
+                <!-- Verified Impact Points -->
+                <div class="impact-metrics-row">
+                  <div class="impact-item">
+                    <span class="impact-key">AUTH SPEC:</span>
+                    <span class="impact-val">JWT Stateless + RBAC</span>
+                  </div>
+                  <div class="impact-item">
+                    <span class="impact-key">DATA STORE:</span>
+                    <span class="impact-val">PostgreSQL Normalized</span>
+                  </div>
+                  <div class="impact-item">
+                    <span class="impact-key">HUMAN OUTCOME:</span>
+                    <span class="impact-val">Transparent Relief Logistics</span>
+                  </div>
+                </div>
+
+                <!-- Action Links -->
+                <div class="dossier-actions">
+                  <a href="https://github.com/rokon-rabbi/hands-on-volunteering-platform" target="_blank" rel="noopener noreferrer" class="btn-dossier-repo">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    <span>SOURCE REPO</span>
+                  </a>
+                  <button class="btn-dossier-schema" data-target="schema-volunteering">
+                    <span>INSPECT DATA SCHEMA</span>
+                    <span class="btn-schema-icon">⚙</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Right: Architectural Blueprint Schema Diagram -->
+              <div class="dossier-diagram-col">
+                <div class="schematic-plate">
+                  <div class="plate-hud">
+                    <span class="plate-title">// ARCHITECTURAL TOPOLOGY SCHEMATIC</span>
+                    <span class="plate-tag">FIGURE 01.A</span>
+                  </div>
+                  <div class="schematic-canvas-box">
+                    <svg viewBox="0 0 460 280" fill="none" class="schematic-svg">
+                      <!-- Grid lines -->
+                      <line x1="20" y1="40" x2="440" y2="40" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2 2"/>
+                      <line x1="20" y1="140" x2="440" y2="140" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2 2"/>
+                      <line x1="20" y1="240" x2="440" y2="240" stroke="rgba(255,255,255,0.06)" stroke-dasharray="2 2"/>
+                      
+                      <!-- Tier 1: Client Node -->
+                      <rect x="30" y="70" width="100" height="60" rx="4" fill="#12161F" stroke="#38BDF8" stroke-width="1.5"/>
+                      <text x="80" y="98" fill="#F1F5F9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">CLIENT</text>
+                      <text x="80" y="114" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="9" text-anchor="middle">React SPA</text>
+
+                      <!-- Connector 1 -->
+                      <path d="M130 100H180" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="4 3"/>
+                      <polygon points="178,97 184,100 178,103" fill="#38BDF8"/>
+                      <text x="155" y="92" fill="#64748B" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">REST/JWT</text>
+
+                      <!-- Tier 2: Backend Node -->
+                      <rect x="185" y="60" width="120" height="80" rx="4" fill="#12161F" stroke="#2563EB" stroke-width="1.5"/>
+                      <text x="245" y="88" fill="#F1F5F9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">SPRING BOOT</text>
+                      <text x="245" y="104" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">Security & RBAC</text>
+                      <text x="245" y="120" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="8" text-anchor="middle">Event Service</text>
+
+                      <!-- Connector 2 -->
+                      <path d="M305 100H355" stroke="#2563EB" stroke-width="1.5" stroke-dasharray="4 3"/>
+                      <polygon points="353,97 359,100 353,103" fill="#2563EB"/>
+                      <text x="330" y="92" fill="#64748B" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">JDBC/JPA</text>
+
+                      <!-- Tier 3: Database Node -->
+                      <rect x="360" y="70" width="80" height="60" rx="4" fill="#12161F" stroke="#F59E0B" stroke-width="1.5"/>
+                      <text x="400" y="98" fill="#F1F5F9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">DATABASE</text>
+                      <text x="400" y="114" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">PostgreSQL</text>
+
+                      <!-- Bottom Pipeline Telemetry Callouts -->
+                      <rect x="30" y="180" width="410" height="70" rx="4" fill="#0B0E14" stroke="rgba(255,255,255,0.08)"/>
+                      <text x="45" y="202" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600">// RELATIONAL ENTITY MAPPING</text>
+                      <text x="45" y="220" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8.5">User(id, email, role) ──1:N──&gt; Registration ──N:1──&gt; Event(id, title, capacity)</text>
+                      <text x="45" y="236" fill="#64748B" font-family="'JetBrains Mono', monospace" font-size="8.5">ACID compliance guarantees zero race conditions on volunteer seat allocations.</text>
+                    </svg>
+                  </div>
+                  <div class="plate-footer">
+                    <span>TRANSACTIONAL INTEGRITY: VERIFIED</span>
+                    <span>LATENCY: &lt;45MS P99</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- DOSSIER 02: University Academic Management System -->
+          <article class="system-dossier-card" id="dossier-courseflow">
+            <div class="corner-crosshair top-left"></div>
+            <div class="corner-crosshair top-right"></div>
+            <div class="corner-crosshair bottom-left"></div>
+            <div class="corner-crosshair bottom-right"></div>
+
+            <div class="dossier-grid">
+              <!-- Left: Specifications -->
+              <div class="dossier-specs-col">
+                <div class="dossier-header-meta">
+                  <span class="sys-code">SYSTEM 02 // INSTITUTIONAL WORKFLOW</span>
+                  <span class="sys-status enterprise-status">TYPE-SAFE ARCHITECTURE</span>
+                </div>
+
+                <h3 class="dossier-title">CourseFlow — Academic Clearance & Attendance System</h3>
+
+                <div class="tech-stack-pills">
+                  <span class="tech-pill">React</span>
+                  <span class="tech-pill">TypeScript</span>
+                  <span class="tech-pill">Tailwind CSS</span>
+                  <span class="tech-pill">Node.js</span>
+                  <span class="tech-pill">MySQL</span>
+                  <span class="tech-pill">Type-Safe Models</span>
+                </div>
+
+                <div class="challenge-solution-grid">
+                  <div class="cs-box problem-box">
+                    <span class="cs-label">HUMAN CHALLENGE</span>
+                    <p class="cs-text">University attendance tracking, anonymous course evaluation, and exam eligibility sign-offs were stalled in multi-week manual paper approvals and signature queues.</p>
+                  </div>
+                  <div class="cs-box solution-box">
+                    <span class="cs-label">ENGINEERING ARCHITECTURE</span>
+                    <p class="cs-text">Built a 5-tier role-based approval engine: Chairman &gt; Coordinators &gt; Faculty &gt; Students &gt; Provost. Type-safe TypeScript domain models guarantee zero approval-state ambiguity.</p>
+                  </div>
+                </div>
+
+                <div class="impact-metrics-row">
+                  <div class="impact-item">
+                    <span class="impact-key">ROLE TIERS:</span>
+                    <span class="impact-val">5 Distinct Authorizations</span>
+                  </div>
+                  <div class="impact-item">
+                    <span class="impact-key">DATA STORE:</span>
+                    <span class="impact-val">MySQL Relational</span>
+                  </div>
+                  <div class="impact-item">
+                    <span class="impact-key">HUMAN OUTCOME:</span>
+                    <span class="impact-val">Replaced 100% Paper Queues</span>
+                  </div>
+                </div>
+
+                <div class="dossier-actions">
+                  <a href="https://github.com/rokon-rabbi/university-project" target="_blank" rel="noopener noreferrer" class="btn-dossier-repo">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    <span>FRONTEND REPO (TS)</span>
+                  </a>
+                  <a href="https://github.com/rokon-rabbi/university-project-server" target="_blank" rel="noopener noreferrer" class="btn-dossier-subrepo">
+                    <span>BACKEND SERVER</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Right: Workflow Sequence Diagram -->
+              <div class="dossier-diagram-col">
+                <div class="schematic-plate">
+                  <div class="plate-hud">
+                    <span class="plate-title">// HIERARCHICAL APPROVAL STATE PIPELINE</span>
+                    <span class="plate-tag">FIGURE 02.B</span>
+                  </div>
+                  <div class="schematic-canvas-box">
+                    <svg viewBox="0 0 460 280" fill="none" class="schematic-svg">
+                      <!-- 5 Step Stepper -->
+                      <g stroke="#38BDF8" stroke-width="1.2">
+                        <!-- Step 1 -->
+                        <rect x="25" y="30" width="85" height="50" rx="4" fill="#12161F"/>
+                        <text x="67" y="55" fill="#F1F5F9" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">1. CHAIRMAN</text>
+                        <text x="67" y="68" fill="#38BDF8" font-family="'Inter', sans-serif" font-size="7.5" text-anchor="middle">Assigns Coord</text>
+
+                        <!-- Arrow 1 -->
+                        <line x1="110" y1="55" x2="135" y2="55"/>
+                        <polygon points="133,52 138,55 133,58" fill="#38BDF8"/>
+
+                        <!-- Step 2 -->
+                        <rect x="140" y="30" width="85" height="50" rx="4" fill="#12161F"/>
+                        <text x="182" y="55" fill="#F1F5F9" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">2. COORD</text>
+                        <text x="182" y="68" fill="#38BDF8" font-family="'Inter', sans-serif" font-size="7.5" text-anchor="middle">Assigns Faculty</text>
+
+                        <!-- Arrow 2 -->
+                        <line x1="225" y1="55" x2="250" y2="55"/>
+                        <polygon points="248,52 253,55 248,58" fill="#38BDF8"/>
+
+                        <!-- Step 3 -->
+                        <rect x="255" y="30" width="85" height="50" rx="4" fill="#12161F"/>
+                        <text x="297" y="55" fill="#F1F5F9" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">3. FACULTY</text>
+                        <text x="297" y="68" fill="#38BDF8" font-family="'Inter', sans-serif" font-size="7.5" text-anchor="middle">Logs Attendance</text>
+
+                        <!-- Arrow 3 -->
+                        <line x1="340" y1="55" x2="365" y2="55"/>
+                        <polygon points="363,52 368,55 363,58" fill="#38BDF8"/>
+
+                        <!-- Step 4 -->
+                        <rect x="370" y="30" width="75" height="50" rx="4" fill="#12161F"/>
+                        <text x="407" y="55" fill="#F1F5F9" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">4. STUDENT</text>
+                        <text x="407" y="68" fill="#38BDF8" font-family="'Inter', sans-serif" font-size="7.5" text-anchor="middle">Eval Feedback</text>
+                      </g>
+
+                      <!-- Step 5 Final Clearance -->
+                      <rect x="140" y="125" width="200" height="50" rx="4" fill="#181D27" stroke="#10B981" stroke-width="1.5"/>
+                      <text x="240" y="148" fill="#F1F5F9" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" text-anchor="middle">5. PROVOST AUTOMATION</text>
+                      <text x="240" y="163" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="8.5" text-anchor="middle">Issues Digital Exam Hall Entry Ticket</text>
+
+                      <!-- Connector Lines -->
+                      <path d="M297 80V105H240V125" stroke="#10B981" stroke-dasharray="3 3"/>
+                      <path d="M407 80V105H240" stroke="#10B981" stroke-dasharray="3 3"/>
+
+                      <!-- Schema Verification Note -->
+                      <rect x="25" y="200" width="420" height="55" rx="4" fill="#0B0E14" stroke="rgba(255,255,255,0.08)"/>
+                      <text x="40" y="222" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600">// TYPE-SAFETY CONTRACT</text>
+                      <text x="40" y="240" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8.5">interface ClearanceToken { studentId: string; status: 'APPROVED' | 'HELD'; provostSign: Hash }</text>
+                    </svg>
+                  </div>
+                  <div class="plate-footer">
+                    <span>SECURITY: TAMPER-RESISTANT WORKFLOW</span>
+                    <span>TYPE-COVERAGE: STRICT</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- DOSSIER 03: Chemistry Scientific Calculator Desktop Suite -->
+          <article class="system-dossier-card" id="dossier-chemistry">
+            <div class="corner-crosshair top-left"></div>
+            <div class="corner-crosshair top-right"></div>
+            <div class="corner-crosshair bottom-left"></div>
+            <div class="corner-crosshair bottom-right"></div>
+
+            <div class="dossier-grid">
+              <!-- Left: Specs -->
+              <div class="dossier-specs-col">
+                <div class="dossier-header-meta">
+                  <span class="sys-code">SYSTEM 03 // SCIENTIFIC DESKTOP COMPUTING</span>
+                  <span class="sys-status tool-status">ALGORITHMIC SOLVER</span>
+                </div>
+
+                <h3 class="dossier-title">Chemistry Scientific Calculator & Stoichiometry Engine</h3>
+
+                <div class="tech-stack-pills">
+                  <span class="tech-pill">Java</span>
+                  <span class="tech-pill">Java Swing</span>
+                  <span class="tech-pill">JavaFX</span>
+                  <span class="tech-pill">Linear Algebra</span>
+                  <span class="tech-pill">Matrix Solver</span>
+                </div>
+
+                <div class="challenge-solution-grid">
+                  <div class="cs-box problem-box">
+                    <span class="cs-label">HUMAN CHALLENGE</span>
+                    <p class="cs-text">Students and lab researchers face frequent human calculation errors when manually balancing multi-element chemical reactions and computing molar titration volumes.</p>
+                  </div>
+                  <div class="cs-box solution-box">
+                    <span class="cs-label">ENGINEERING ARCHITECTURE</span>
+                    <p class="cs-text">Developed a desktop scientific solver in pure Java utilizing Gaussian elimination matrices to mathematically balance complex chemical equations and compute molar masses in real-time.</p>
+                  </div>
+                </div>
+
+                <div class="impact-metrics-row">
+                  <div class="impact-item">
+                    <span class="impact-key">ALGORITHM:</span>
+                    <span class="impact-val">Gaussian Elimination</span>
+                  </div>
+                  <div class="impact-item">
+                    <span class="impact-key">INTERFACE:</span>
+                    <span class="impact-val">JavaFX / Swing GUI</span>
+                  </div>
+                  <div class="impact-item">
+                    <span class="impact-key">HUMAN OUTCOME:</span>
+                    <span class="impact-val">Zero Lab Formula Calculation Errors</span>
+                  </div>
+                </div>
+
+                <div class="dossier-actions">
+                  <a href="https://github.com/rokon-rabbi/chemistry-calculator" target="_blank" rel="noopener noreferrer" class="btn-dossier-repo">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    <span>JAVA REPOSITORY</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Right: Mathematical Matrix Balancing Graphic -->
+              <div class="dossier-diagram-col">
+                <div class="schematic-plate">
+                  <div class="plate-hud">
+                    <span class="plate-title">// EQUATION BALANCING MATRIX ENGINE</span>
+                    <span class="plate-tag">FIGURE 03.C</span>
+                  </div>
+                  <div class="schematic-canvas-box">
+                    <svg viewBox="0 0 460 280" fill="none" class="schematic-svg">
+                      <!-- Matrix Bracket Graphic -->
+                      <path d="M50 40H30V240H50" stroke="#38BDF8" stroke-width="2"/>
+                      <path d="M410 40H430V240H410" stroke="#38BDF8" stroke-width="2"/>
+
+                      <text x="230" y="70" fill="#F1F5F9" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600" text-anchor="middle">Fe + O₂ ───&gt; Fe₂O₃</text>
+                      
+                      <!-- Matrix row calculations -->
+                      <text x="70" y="110" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="10">[ Fe: +1a +0b -2c = 0 ]</text>
+                      <text x="70" y="135" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="10">[  O: +0a +2b -3c = 0 ]</text>
+
+                      <!-- Solver output -->
+                      <rect x="70" y="160" width="320" height="55" rx="4" fill="#0B0E14" stroke="#F59E0B" stroke-width="1.2"/>
+                      <text x="90" y="184" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600">GAUSSIAN MATRIX REDUCTION SOLVER:</text>
+                      <text x="90" y="202" fill="#F1F5F9" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">Balanced Output: 4Fe + 3O₂ ───&gt; 2Fe₂O₃</text>
+                    </svg>
+                  </div>
+                  <div class="plate-footer">
+                    <span>ACCURACY: 100% DETERMINISTIC</span>
+                    <span>RUNTIME: NATIVE JVM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 4: PROTOTYPE INTERACTIVE ENGINEERING VISUALIZATION -->
+    <!-- ========================================================= -->
+    <section class="blueprint-section topology-section" id="systems-topology">
+      <div class="section-container">
+        
+        <div class="section-header-block">
+          <div class="section-index-badge">
+            <span class="index-num">03</span>
+            <span class="index-title">INTERACTIVE VISUALIZATION // FULL-STACK TOPOLOGY</span>
+          </div>
+          <h2 class="section-headline">
+            Anatomy of a complete <span class="headline-italic">full-stack</span> architecture.
+          </h2>
+          <p class="section-intro">
+            Interact with the live engineering matrix below to explore how data contracts, auth security, and UI components interlock across the entire engineering pipeline.
+          </p>
+        </div>
+
+        <!-- Interactive Systems Topology Console -->
+        <div class="topology-console-deck">
+          <div class="corner-crosshair top-left"></div>
+          <div class="corner-crosshair top-right"></div>
+          <div class="corner-crosshair bottom-left"></div>
+          <div class="corner-crosshair bottom-right"></div>
+
+          <!-- Console Controls Bar -->
+          <div class="console-controls-bar">
+            <div class="console-title-group">
+              <span class="console-dot"></span>
+              <span class="console-heading">LIVE ARCHITECTURE TELEMETRY MATRIX</span>
+            </div>
+            
+            <div class="console-tabs" role="tablist">
+              <button class="console-tab active" data-view="dataflow">01 // DATAFLOW PIPELINE</button>
+              <button class="console-tab" data-view="security">02 // AUTH & SECURITY MATRIX</button>
+              <button class="console-tab" data-view="performance">03 // PERFORMANCE PROFILING</button>
+            </div>
+          </div>
+
+          <!-- Interactive Visualization Stage -->
+          <div class="topology-display-stage">
+            
+            <!-- Dynamic Telemetry Screen -->
+            <div class="telemetry-screen" id="telemetryView">
+              
+              <!-- Left: Interactive Node Tree -->
+              <div class="node-tree-panel">
+                <span class="panel-tag">// SYSTEM LAYERS (SELECT NODE TO INSPECT)</span>
+                
+                <div class="interactive-node active" data-node="client">
+                  <div class="node-header">
+                    <span class="node-indicator"></span>
+                    <span class="node-title">01. BROWSER CLIENT (REACT / NEXT.JS)</span>
+                  </div>
+                  <p class="node-desc">TypeScript strict typing, virtual DOM reconciliation, GSAP hardware-accelerated animations.</p>
+                </div>
+
+                <div class="interactive-node" data-node="api">
+                  <div class="node-header">
+                    <span class="node-indicator"></span>
+                    <span class="node-title">02. API GATEWAY & CONTROLLERS</span>
+                  </div>
+                  <p class="node-desc">REST / GraphQL endpoints, payload validation, CORS policies, rate limiting.</p>
+                </div>
+
+                <div class="interactive-node" data-node="security">
+                  <div class="node-header">
+                    <span class="node-indicator"></span>
+                    <span class="node-title">03. SPRING SECURITY & JWT FILTER</span>
+                  </div>
+                  <p class="node-desc">Stateless token extraction, BCrypt password hashing, Role-Based Access Control (RBAC).</p>
+                </div>
+
+                <div class="interactive-node" data-node="storage">
+                  <div class="node-header">
+                    <span class="node-indicator"></span>
+                    <span class="node-title">04. DATABASE & PERSISTENCE TIER</span>
+                  </div>
+                  <p class="node-desc">PostgreSQL / MySQL relational schemas, ACID transactions, indexed query plans.</p>
+                </div>
+              </div>
+
+              <!-- Right: Real-time Telemetry Readout Box -->
+              <div class="node-readout-panel">
+                <div class="readout-header">
+                  <span class="readout-label">// LIVE NODE SPECIFICATION INSPECTOR</span>
+                  <span class="readout-id" id="inspectNodeId">NODE: CLIENT</span>
+                </div>
+                
+                <div class="readout-content" id="inspectContent">
+                  <div class="readout-stat-row">
+                    <span class="stat-name">RUNTIME ENGINE:</span>
+                    <span class="stat-val highlight-cyan">V8 / Browser JavaScript Runtime</span>
+                  </div>
+                  <div class="readout-stat-row">
+                    <span class="stat-name">TYPE RIGOR:</span>
+                    <span class="stat-val">TypeScript 5.x Strict Mode (Zero 'any')</span>
+                  </div>
+                  <div class="readout-stat-row">
+                    <span class="stat-name">STATE MANAGEMENT:</span>
+                    <span class="stat-val">React Context + Hook primitives</span>
+                  </div>
+                  <div class="readout-stat-row">
+                    <span class="stat-name">PERFORMANCE TARGET:</span>
+                    <span class="stat-val highlight-green">60 FPS Scroll Choreography</span>
+                  </div>
+
+                  <div class="readout-code-block">
+                    <span class="code-comment">// Verified Architecture Guarantee</span>
+                    <code>const verifyNodeIntegrity = (node: SystemNode): Result =&gt; {<br>
+&nbsp;&nbsp;return { status: 200, latency: '&lt;16ms', hydrated: true };<br>
+};</code>
+                  </div>
+                </div>
+
+                <div class="readout-footer">
+                  <span class="readout-status">TELEMETRY LINK: STABLE</span>
+                  <span class="readout-timestamp" id="liveTimestamp">2026-09-24 13:20:00 BST</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 5: PROTOTYPE CONTACT & CLOSING SECTION -->
+    <!-- ========================================================= -->
+    <section class="blueprint-section contact-section" id="contact-dossier">
+      <div class="section-container">
+        
+        <div class="section-header-block">
+          <div class="section-index-badge">
+            <span class="index-num">04</span>
+            <span class="index-title">DIRECT CONNECTION // CONTACT DOSSIER</span>
+          </div>
+          <h2 class="section-headline">
+            Let's build something <span class="headline-italic">exceptional</span> together.
+          </h2>
+          <p class="section-intro">
+            Whether you are looking for a dedicated full-stack engineer, discussing architectural design, or collaborating on ambitious digital tools, my inbox is open.
+          </p>
+        </div>
+
+        <div class="contact-dossier-card">
+          <div class="corner-crosshair top-left"></div>
+          <div class="corner-crosshair top-right"></div>
+          <div class="corner-crosshair bottom-left"></div>
+          <div class="corner-crosshair bottom-right"></div>
+
+          <div class="contact-split-grid">
+            
+            <!-- Left: Direct Channels & Verified Details -->
+            <div class="contact-channels-col">
+              <div class="channels-header">
+                <span class="channel-code">// TRANSMISSION CHANNELS</span>
+                <span class="channel-loc">DHAKA, BANGLADESH</span>
+              </div>
+
+              <div class="channels-list">
+                
+                <!-- Email -->
+                <a href="mailto:rokonrabbi21@gmail.com" class="channel-item">
+                  <div class="channel-icon-box">✉</div>
+                  <div class="channel-details">
+                    <span class="channel-title">PRIMARY EMAIL</span>
+                    <span class="channel-value">rokonrabbi21@gmail.com</span>
+                  </div>
+                  <span class="channel-arrow">→</span>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/rokon1/" target="_blank" rel="noopener noreferrer" class="channel-item">
+                  <div class="channel-icon-box">in</div>
+                  <div class="channel-details">
+                    <span class="channel-title">LINKEDIN PROFILE</span>
+                    <span class="channel-value">linkedin.com/in/rokon1</span>
+                  </div>
+                  <span class="channel-arrow">→</span>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/rokon-rabbi" target="_blank" rel="noopener noreferrer" class="channel-item">
+                  <div class="channel-icon-box">gh</div>
+                  <div class="channel-details">
+                    <span class="channel-title">GITHUB REPOSITORIES</span>
+                    <span class="channel-value">github.com/rokon-rabbi (39 Repos)</span>
+                  </div>
+                  <span class="channel-arrow">→</span>
+                </a>
+
+                <!-- Direct Phone -->
+                <div class="channel-item no-click">
+                  <div class="channel-icon-box">☎</div>
+                  <div class="channel-details">
+                    <span class="channel-title">PHONE / WHATSAPP</span>
+                    <span class="channel-value">+880 1902 978060</span>
+                  </div>
+                  <span class="channel-tag">DIRECT</span>
+                </div>
+
+              </div>
+
+              <!-- Formal Resume Download Callout -->
+              <div class="resume-download-plate">
+                <div class="plate-info">
+                  <span class="plate-title">VERIFIED PROFESSIONAL CV</span>
+                  <span class="plate-desc">Comprehensive career history, NSTU degree & technical skills.</span>
+                </div>
+                <a href="https://drive.google.com/file/d/1bnyD5ny00ZIAhz9msLT40ACmzdwyeXQW/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-resume-download">
+                  <span>DOWNLOAD PDF</span>
+                  <span>↓</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right: Interactive Contact Transmission Form -->
+            <div class="contact-form-col">
+              <div class="form-header">
+                <span class="form-code">// DIRECT TRANSMISSION FORM</span>
+                <span class="form-status">ENCRYPTION: SSL / TLS</span>
+              </div>
+
+              <form class="blueprint-form" id="contactForm" onsubmit="event.preventDefault(); alert('Transmission simulated: message formatted according to protocol.');">
+                
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="senderName" class="form-label">SENDER NAME <span class="req">*</span></label>
+                    <input type="text" id="senderName" class="form-input" placeholder="e.g. Jane Doe" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="senderEmail" class="form-label">WORK EMAIL <span class="req">*</span></label>
+                    <input type="email" id="senderEmail" class="form-input" placeholder="jane@company.com" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="projectScope" class="form-label">PURPOSE / INQUIRY TYPE</label>
+                  <select id="projectScope" class="form-select">
+                    <option value="engineering-role">Full-Time / Contract Engineering Role</option>
+                    <option value="technical-architecture">Technical Architecture Consultation</option>
+                    <option value="creative-collab">Creative WebGL / Frontend Collaboration</option>
+                    <option value="general-inquiry">General Discussion</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="messageText" class="form-label">TRANSMISSION CONTENT <span class="req">*</span></label>
+                  <textarea id="messageText" rows="5" class="form-textarea" placeholder="Detail your project requirements, team context, or engineering challenge..." required></textarea>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn-submit-transmission">
+                    <span class="btn-label">TRANSMIT MESSAGE</span>
+                    <span class="btn-arrow">→</span>
+                  </button>
+                  <span class="form-disclaimer">Zero spam policy. Your contact data remains confidential.</span>
+                </div>
+
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- FOOTER: THE CLOSING BLUEPRINT PLATE -->
+  <!-- ========================================================= -->
+  <footer class="blueprint-footer">
+    <div class="footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <div class="brand-monogram-mini">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none">
+              <rect width="24" height="24" rx="4" fill="#0B0E14" stroke="#38BDF8" stroke-opacity="0.4"/>
+              <path d="M8 6V18M8 6H13C15 6 16.5 7.5 16.5 9.5C16.5 11.5 15 13 13 13H8M12 13L16.5 18" stroke="#F1F5F9" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="footer-name">MD. ROKONUZZAMAN</span>
+          <span class="footer-tagline">· THE HUMAN SIDE OF ENGINEERING</span>
+        </div>
+
+        <div class="footer-nav">
+          <a href="#hero">Top</a>
+          <a href="#selected-works">Works</a>
+          <a href="#systems-topology">Architecture</a>
+          <a href="#contact-dossier">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-hairline"></div>
+
+      <div class="footer-bottom-row">
+        <p class="footer-copy">© 2026 Md. Rokonuzzaman. Designed with architectural discipline & human empathy. All rights reserved.</p>
+        <div class="footer-telemetry">
+          <span>LAT 23.8103° N</span>
+          <span>LON 90.4125° E</span>
+          <span>DHAKA, BANGLADESH</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
