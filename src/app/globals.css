@@ -17,3 +17,4 @@
 @import '../styles/topology.css' layer(components);
 @import '../styles/contact.css' layer(components);
 @import '../styles/states.css' layer(components);
+@import '../styles/scene.css' layer(components);

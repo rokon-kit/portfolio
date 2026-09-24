@@ -86,7 +86,7 @@ To prevent memory leaks and zombie event listeners during React component re-ren
 
 ## 6. As-Built Structure (Milestone 3)
 
-The sections above describe the target architecture. This section records what exists after Milestone 3 (see ADR-007 to ADR-014). GSAP, Three.js and React Three Fiber are **not installed yet** (ADR-008).
+The sections above describe the target architecture. This section records what exists after Milestone 3 (see ADR-007 to ADR-014). The 3D scene added in Milestone 4 is described in §7; GSAP is **not installed yet** (ADR-008).
 
 ```
 rokon-portfolio/
@@ -144,3 +144,42 @@ rokon-portfolio/
 - M5/M8: GSAP registered once in `lib/`, animations scoped with `useGSAP` in `components/motion/`; reduced motion via `gsap.matchMedia`.
 - M6: richer `content/projects.ts` entries and `work/[slug]` sections; M7: `content/` additions and a real contact pipeline.
 
+
+---
+
+## 7. As-Built 3D Scene (Milestone 4 — standalone, development-only)
+
+Decisions: ADR-016 to ADR-022. The scene is **not** part of any portfolio page yet; it lives behind the lab route and is loaded only there.
+
+```
+src/
+├── app/lab/system/page.tsx        # dev-only route (notFound() unless LAB_ENABLED); noindex
+├── lib/lab.ts                     # LAB_ENABLED = NODE_ENV !== 'production' || ENABLE_SCENE_LAB === 'true'
+├── types/system.ts                # ComponentId / RouteId unions, SystemMode / SystemView, content types
+├── content/system.ts              # the 7 components' copy, flows, disclaimer (engineering terms only)
+├── styles/scene.css               # stage, poster, labels, panel, lab layout (layered as `components`)
+└── components/canvas/system/
+    ├── modules.ts                 # geometry as data: primitives per module, bounds, ground, triangle estimate
+    ├── layout.ts                  # origins, explode offsets, ports, routes, hit volumes, camera poses, label anchors
+    ├── routes.ts                  # orthogonal router (always ends on ports) + polyline sampling
+    ├── camera.ts                  # frameBounds() exact framing solver, damping, pose → position
+    ├── quality.ts                 # high / low tiers + pickQuality()
+    ├── geometry.ts · materials.ts # data → merged BufferGeometry (≤ 4 calls / module); shared materials
+    ├── SceneRuntime.ts            # imperative runtime: lights, modules, conduits, pulses, camera rig, picking, labels
+    ├── SystemCanvas.tsx           # R3F <Canvas>: frame governor, pointer input, context loss, debug API (client-only chunk)
+    ├── SystemExperience.tsx       # composition: stage + labels + poster + panel; renderer phase; error boundary
+    ├── SystemPanel.tsx · SceneLabels.tsx · SystemPoster.tsx + posterGeometry.ts   # DOM equivalent, labels, SVG fallback
+    ├── SystemLab.tsx              # lab controls (quality, motion, pause, fallback, hit volumes, remount, stats)
+    ├── store.ts · hooks.ts · webgl.ts    # external store, media/quality/render-gate hooks, WebGL detection
+    └── system.test.ts             # 28 scene tests (36 in the repo with the 8 M3 contact tests): geometry, routes, framing, quality, picking volumes
+```
+
+**Data flow.** `modules.ts` + `layout.ts` (pure data/math) → `geometry.ts` builds merged geometries → `SceneRuntime` owns every object → `SystemCanvas` drives it from one `useFrame`. React only mounts the runtime and forwards interaction state through `store.ts`; DOM components subscribe with `useSyncExternalStore`. The SVG poster and the tests read the same data as the 3D builder.
+
+**Lifecycle.** Build in an effect, dispose geometries/materials/instanced meshes on unmount or tier change; `frameloop="demand"` with an rAF governor gated by IntersectionObserver, tab visibility, pause and reduced motion (0 frames off-screen); WebGL context loss → poster + restore handling; error boundary → poster.
+
+**Budgets (measured in the lab, SwiftShader software WebGL — see `docs/QA_REPORTS.md` for the caveat):** high tier ≈ 4,600 triangles, 24–28 draw calls, 1 texture; low tier ≈ 2,000 triangles; design budget is ≤ 20,000 triangles and < 30 draw calls.
+
+**Lab flags.** `npm run dev` exposes `/lab/system`. For QA against an optimised build: `ENABLE_SCENE_LAB=true npm run build && npx next start -p 3100`. A default `npm run build` produces **no** `/lab/system` route (it returns 404).
+
+**Integration path (later milestones).** `SystemExperience` is self-contained (own store, poster, panel), so M5/M8 can mount it in a page section, or feed its store from scroll, without changing the runtime. The hero's static SVG stays the fallback for the hero scene (ADR-012).

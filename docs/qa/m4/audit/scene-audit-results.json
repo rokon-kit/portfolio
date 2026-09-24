@@ -1,0 +1,955 @@
+{
+  "base": "http://localhost:3100",
+  "total": 149,
+  "failed": 11,
+  "notes": {
+    "desktop-1440": {
+      "gl": {
+        "calls": 28,
+        "triangles": 4628,
+        "lines": 1497,
+        "geometries": 28,
+        "textures": 1,
+        "frame": 13,
+        "programs": 7,
+        "dpr": 1,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "readyMs": 2867,
+      "targetSizePx": {
+        "frontend": 96,
+        "auth": 68,
+        "services": 76,
+        "database": 80,
+        "cache": 72,
+        "search": 104,
+        "messaging": 36
+      },
+      "picks": {
+        "frontend": "frontend",
+        "auth": "auth",
+        "services": "services",
+        "database": "database",
+        "cache": "cache",
+        "search": "search",
+        "messaging": "messaging"
+      },
+      "stats": {
+        "State": "overview",
+        "Selected": "—",
+        "Hovered": "—",
+        "Draw calls": "28 / 30",
+        "Triangles": "4628 / 20000",
+        "Line segments": "1497",
+        "Geometries": "28",
+        "Textures": "1",
+        "Pixel ratio": "1.00",
+        "Canvas": "740 × 508",
+        "Frame interval": "29.2 ms (34 fps)",
+        "Scene CPU / frame": "0.10 ms",
+        "Frames rendered": "2013"
+      },
+      "cpuMs": {
+        "median": 0.10257241811657508,
+        "min": 0.07527844721351833,
+        "max": 0.12386022772259056
+      },
+      "envNoise": 0
+    },
+    "tablet-768": {
+      "gl": {
+        "calls": 28,
+        "triangles": 4628,
+        "lines": 1497,
+        "geometries": 28,
+        "textures": 1,
+        "frame": 25,
+        "programs": 7,
+        "dpr": 1,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "readyMs": 1923,
+      "targetSizePx": {
+        "frontend": 100,
+        "auth": 68,
+        "services": 80,
+        "database": 84,
+        "cache": 76,
+        "search": 104,
+        "messaging": 40
+      },
+      "picks": {
+        "frontend": "frontend",
+        "auth": "auth",
+        "services": "frontend",
+        "database": "database",
+        "cache": "cache",
+        "search": "search",
+        "messaging": "messaging"
+      },
+      "stats": {
+        "State": "overview",
+        "Selected": "—",
+        "Hovered": "—",
+        "Draw calls": "28 / 30",
+        "Triangles": "4628 / 20000",
+        "Line segments": "1497",
+        "Geometries": "28",
+        "Textures": "1",
+        "Pixel ratio": "1.00",
+        "Canvas": "690 × 517",
+        "Frame interval": "27.9 ms (36 fps)",
+        "Scene CPU / frame": "0.12 ms",
+        "Frames rendered": "2073"
+      },
+      "cpuMs": {
+        "median": 0.11694267771601362,
+        "min": 0.09975583992540817,
+        "max": 0.1359772617758056
+      },
+      "envNoise": 0
+    },
+    "mobile-390": {
+      "gl": {
+        "calls": 27,
+        "triangles": 2028,
+        "lines": 1133,
+        "geometries": 27,
+        "textures": 1,
+        "frame": 29,
+        "programs": 6,
+        "dpr": 1,
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+      },
+      "readyMs": 1921,
+      "targetSizePx": {
+        "frontend": 60,
+        "auth": 36,
+        "services": 52,
+        "database": 52,
+        "cache": 56,
+        "search": 84,
+        "messaging": 32
+      },
+      "picks": {
+        "frontend": "frontend",
+        "auth": "auth",
+        "services": "services",
+        "database": "database",
+        "cache": null,
+        "search": "search",
+        "messaging": "messaging"
+      },
+      "stats": {
+        "State": "overview",
+        "Selected": "—",
+        "Hovered": "—",
+        "Draw calls": "27 / 30",
+        "Triangles": "2028 / 20000",
+        "Line segments": "1133",
+        "Geometries": "27",
+        "Textures": "1",
+        "Pixel ratio": "1.00",
+        "Canvas": "352 × 422",
+        "Frame interval": "33.3 ms (30 fps)",
+        "Scene CPU / frame": "0.08 ms",
+        "Frames rendered": "1750"
+      },
+      "cpuMs": {
+        "median": 0.07406139340733667,
+        "min": 0.0660311954094332,
+        "max": 0.09747908260517124
+      },
+      "envNoise": 0
+    },
+    "desktopMetrics": {
+      "Timestamp": 26065.80203,
+      "AudioHandlers": 0,
+      "AudioWorkletProcessors": 0,
+      "Documents": 1,
+      "Frames": 1,
+      "JSEventListeners": 432,
+      "LayoutObjects": 1248,
+      "MediaKeySessions": 0,
+      "MediaKeys": 0,
+      "Nodes": 1354,
+      "Resources": 31,
+      "ContextLifecycleStateObservers": 14,
+      "V8PerContextDatas": 1,
+      "WorkerGlobalScopes": 0,
+      "UACSSResources": 0,
+      "RTCPeerConnections": 0,
+      "ResourceFetchers": 1,
+      "AdSubframes": 0,
+      "DetachedScriptStates": 0,
+      "ArrayBufferContents": 206,
+      "LayoutCount": 116,
+      "RecalcStyleCount": 1102,
+      "LayoutDuration": 0.064145,
+      "RecalcStyleDuration": 0.258103,
+      "DevToolsCommandDuration": 0.027409,
+      "ScriptDuration": 1.656887,
+      "V8CompileDuration": 0.000801,
+      "TaskDuration": 3.559636,
+      "TaskOtherDuration": 1.552291,
+      "ThreadTime": 2.802497,
+      "ProcessTime": 4.35,
+      "JSHeapUsedSize": 10571720,
+      "JSHeapTotalSize": 23855104,
+      "FirstMeaningfulPaint": 26025.487165,
+      "DomContentLoaded": 26025.39117,
+      "NavigationStart": 26025.365558
+    },
+    "adaptiveDpr": {
+      "start": 2,
+      "after": 1
+    }
+  },
+  "checks": [
+    {
+      "name": "desktop-1440: scene reaches \"ready\"",
+      "ok": true,
+      "detail": "2867 ms incl. page load"
+    },
+    {
+      "name": "desktop-1440: quality tier is high",
+      "ok": true,
+      "detail": "high"
+    },
+    {
+      "name": "desktop-1440: draw calls ≤ 30",
+      "ok": true,
+      "detail": "28"
+    },
+    {
+      "name": "desktop-1440: triangles ≤ 20,000",
+      "ok": true,
+      "detail": "4628"
+    },
+    {
+      "name": "desktop-1440: no textures allocated",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "desktop-1440: canvas fills its stage",
+      "ok": true,
+      "detail": "740×508"
+    },
+    {
+      "name": "desktop-1440: exactly one canvas",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "desktop-1440: no horizontal overflow",
+      "ok": true,
+      "detail": "-15"
+    },
+    {
+      "name": "desktop-1440: every component centre is inside the frame",
+      "ok": true,
+      "detail": "all 7"
+    },
+    {
+      "name": "desktop-1440: idle motion is subtle (yaw range 0.83°)",
+      "ok": true,
+      "detail": "0.83°"
+    },
+    {
+      "name": "desktop-1440: hovering highlights the component",
+      "ok": true,
+      "detail": "services"
+    },
+    {
+      "name": "desktop-1440: hover shows exactly one label",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "desktop-1440: hover cursor is a pointer",
+      "ok": true,
+      "detail": "pointer"
+    },
+    {
+      "name": "desktop-1440: leaving clears hover",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop-1440: every component has a tap target of at least 24×24 px (WCAG 2.5.8)",
+      "ok": true,
+      "detail": "smallest 36px, largest 104px"
+    },
+    {
+      "name": "desktop-1440: every component is reachable by clicking it",
+      "ok": true,
+      "detail": "all 7 selected by real input"
+    },
+    {
+      "name": "desktop-1440: selecting moves the camera closer",
+      "ok": true,
+      "detail": "28.2 → 14.3"
+    },
+    {
+      "name": "desktop-1440: view is \"selected\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop-1440: DOM panel names the selection",
+      "ok": true,
+      "detail": "DATABASE"
+    },
+    {
+      "name": "desktop-1440: architecture view engages",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop-1440: exploded fully",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop-1440: all 7 labels shown in architecture view",
+      "ok": true,
+      "detail": "7"
+    },
+    {
+      "name": "desktop-1440: architecture + selection",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop-1440: RETURN restores overview",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop-1440: camera returns to the original composition",
+      "ok": true,
+      "detail": "Δradius 0.00, Δyaw 0.08°"
+    },
+    {
+      "name": "desktop-1440: Escape returns to overview",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop-1440: dragging orbits the camera",
+      "ok": true,
+      "detail": "Δyaw -18.4°"
+    },
+    {
+      "name": "desktop-1440: a drag does not select anything",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop-1440: reset clears the manual orbit",
+      "ok": true,
+      "detail": "-1.70°"
+    },
+    {
+      "name": "desktop-1440: scene CPU per frame is small (median 0.10 ms)",
+      "ok": true,
+      "detail": "0.10 ms (min 0.08, max 0.12)"
+    },
+    {
+      "name": "desktop-1440: axe finds no violations (component selected)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "desktop-1440: no console errors, warnings or exceptions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop-1440: no failed network requests",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tablet-768: scene reaches \"ready\"",
+      "ok": true,
+      "detail": "1923 ms incl. page load"
+    },
+    {
+      "name": "tablet-768: quality tier is high",
+      "ok": true,
+      "detail": "high"
+    },
+    {
+      "name": "tablet-768: draw calls ≤ 30",
+      "ok": true,
+      "detail": "28"
+    },
+    {
+      "name": "tablet-768: triangles ≤ 20,000",
+      "ok": true,
+      "detail": "4628"
+    },
+    {
+      "name": "tablet-768: no textures allocated",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "tablet-768: canvas fills its stage",
+      "ok": true,
+      "detail": "690×517"
+    },
+    {
+      "name": "tablet-768: exactly one canvas",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "tablet-768: no horizontal overflow",
+      "ok": true,
+      "detail": "-15"
+    },
+    {
+      "name": "tablet-768: every component centre is inside the frame",
+      "ok": true,
+      "detail": "all 7"
+    },
+    {
+      "name": "tablet-768: idle motion is subtle (yaw range 0.75°)",
+      "ok": true,
+      "detail": "0.75°"
+    },
+    {
+      "name": "tablet-768: hovering highlights the component",
+      "ok": true,
+      "detail": "services"
+    },
+    {
+      "name": "tablet-768: hover shows exactly one label",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "tablet-768: hover cursor is a pointer",
+      "ok": true,
+      "detail": "pointer"
+    },
+    {
+      "name": "tablet-768: leaving clears hover",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tablet-768: every component has a tap target of at least 24×24 px (WCAG 2.5.8)",
+      "ok": true,
+      "detail": "smallest 40px, largest 104px"
+    },
+    {
+      "name": "tablet-768: every component is reachable by clicking it",
+      "ok": false,
+      "detail": "missed: services→frontend"
+    },
+    {
+      "name": "tablet-768: selecting moves the camera closer",
+      "ok": true,
+      "detail": "28.2 → 15.0"
+    },
+    {
+      "name": "tablet-768: view is \"selected\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tablet-768: DOM panel names the selection",
+      "ok": true,
+      "detail": "DATABASE"
+    },
+    {
+      "name": "tablet-768: architecture view engages",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tablet-768: exploded fully",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tablet-768: all 7 labels shown in architecture view",
+      "ok": true,
+      "detail": "7"
+    },
+    {
+      "name": "tablet-768: architecture + selection",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tablet-768: RETURN restores overview",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tablet-768: camera returns to the original composition",
+      "ok": true,
+      "detail": "Δradius 0.00, Δyaw -1.42°"
+    },
+    {
+      "name": "tablet-768: Escape returns to overview",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tablet-768: dragging orbits the camera",
+      "ok": true,
+      "detail": "Δyaw -16.9°"
+    },
+    {
+      "name": "tablet-768: a drag does not select anything",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tablet-768: reset clears the manual orbit",
+      "ok": true,
+      "detail": "-0.15°"
+    },
+    {
+      "name": "tablet-768: scene CPU per frame is small (median 0.12 ms)",
+      "ok": true,
+      "detail": "0.12 ms (min 0.10, max 0.14)"
+    },
+    {
+      "name": "tablet-768: axe finds no violations (component selected)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "tablet-768: interactive controls are ≥ 44px",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tablet-768: no console errors, warnings or exceptions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tablet-768: no failed network requests",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile-390: scene reaches \"ready\"",
+      "ok": true,
+      "detail": "1921 ms incl. page load"
+    },
+    {
+      "name": "mobile-390: quality tier is low",
+      "ok": true,
+      "detail": "low"
+    },
+    {
+      "name": "mobile-390: draw calls ≤ 30",
+      "ok": true,
+      "detail": "27"
+    },
+    {
+      "name": "mobile-390: triangles ≤ 20,000",
+      "ok": true,
+      "detail": "2028"
+    },
+    {
+      "name": "mobile-390: no textures allocated",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "mobile-390: canvas fills its stage",
+      "ok": true,
+      "detail": "352×422"
+    },
+    {
+      "name": "mobile-390: exactly one canvas",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "mobile-390: no horizontal overflow",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "name": "mobile-390: every component centre is inside the frame",
+      "ok": true,
+      "detail": "all 7"
+    },
+    {
+      "name": "mobile-390: idle motion is subtle (yaw range 0.87°)",
+      "ok": true,
+      "detail": "0.87°"
+    },
+    {
+      "name": "mobile-390: every component has a tap target of at least 24×24 px (WCAG 2.5.8)",
+      "ok": true,
+      "detail": "smallest 32px, largest 84px"
+    },
+    {
+      "name": "mobile-390: every component is reachable by clicking it",
+      "ok": false,
+      "detail": "missed: cache→null"
+    },
+    {
+      "name": "mobile-390: selecting moves the camera closer",
+      "ok": true,
+      "detail": "36.1 → 22.0"
+    },
+    {
+      "name": "mobile-390: view is \"selected\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile-390: DOM panel names the selection",
+      "ok": true,
+      "detail": "DATABASE"
+    },
+    {
+      "name": "mobile-390: architecture view engages",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile-390: exploded fully",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile-390: all 7 labels shown in architecture view",
+      "ok": true,
+      "detail": "7"
+    },
+    {
+      "name": "mobile-390: architecture + selection",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile-390: RETURN restores overview",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile-390: camera returns to the original composition",
+      "ok": true,
+      "detail": "Δradius 0.00, Δyaw -1.59°"
+    },
+    {
+      "name": "mobile-390: Escape returns to overview",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile-390: dragging orbits the camera",
+      "ok": true,
+      "detail": "Δyaw -16.7°"
+    },
+    {
+      "name": "mobile-390: a drag does not select anything",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile-390: horizontal touch drag does not scroll the page",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile-390: reset clears the manual orbit",
+      "ok": true,
+      "detail": "1.73°"
+    },
+    {
+      "name": "mobile-390: scene CPU per frame is small (median 0.07 ms)",
+      "ok": true,
+      "detail": "0.07 ms (min 0.07, max 0.10)"
+    },
+    {
+      "name": "mobile-390: axe finds no violations (component selected)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "mobile-390: interactive controls are ≥ 44px",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile-390: no console errors, warnings or exceptions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile-390: no failed network requests",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard: Tab moves through the component list",
+      "ok": true,
+      "detail": "auth"
+    },
+    {
+      "name": "keyboard: Enter selects the focused component",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard: selection is announced to assistive technology",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard: Escape returns to the overview",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "DOM interface: all 7 components are selectable and explained",
+      "ok": true,
+      "detail": "1111111"
+    },
+    {
+      "name": "honesty: cache / search / messaging are marked as reference concepts",
+      "ok": true,
+      "detail": "{\"cache\":\"Reference concept — not listed as project experience.\",\"search\":\"Reference concept — not listed as project exp"
+    },
+    {
+      "name": "honesty: the conceptual-system disclaimer is visible",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion: scene reaches \"ready\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion: motion mode is \"reduced\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion: no frames are rendered while idle",
+      "ok": true,
+      "detail": "0 frames in 3 s"
+    },
+    {
+      "name": "reduced motion: camera snaps to the selection (no easing)",
+      "ok": true,
+      "detail": "radius 28.2 → 11.9"
+    },
+    {
+      "name": "reduced motion: rendering stops again after the transition",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion: return is immediate",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reduced motion: no console errors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "gating: frames advance while the stage is visible",
+      "ok": true,
+      "detail": "94 frames / 2.5 s"
+    },
+    {
+      "name": "gating: rendering stops while the stage is scrolled off-screen",
+      "ok": true,
+      "detail": "0 frames / 2.5 s"
+    },
+    {
+      "name": "gating: rendering resumes when the stage returns",
+      "ok": true,
+      "detail": "98 frames"
+    },
+    {
+      "name": "gating: the lab pause switch stops rendering",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "resize 1024×768: canvas follows the stage, sculpture stays in frame, no overflow",
+      "ok": true,
+      "detail": "{\"match\":true,\"inside\":true,\"overflow\":-15}"
+    },
+    {
+      "name": "resize 1440×900: canvas follows the stage, sculpture stays in frame, no overflow",
+      "ok": true,
+      "detail": "{\"match\":true,\"inside\":true,\"overflow\":-15}"
+    },
+    {
+      "name": "resize 900×700: canvas follows the stage, sculpture stays in frame, no overflow",
+      "ok": true,
+      "detail": "{\"match\":true,\"inside\":true,\"overflow\":-15}"
+    },
+    {
+      "name": "resize: narrow viewport switches to the simplified tier",
+      "ok": true,
+      "detail": "2028 triangles"
+    },
+    {
+      "name": "resize: returning to desktop restores the full tier",
+      "ok": true,
+      "detail": "2028 → 4628 triangles"
+    },
+    {
+      "name": "resize: geometry count is clean after tier switches",
+      "ok": true,
+      "detail": "28"
+    },
+    {
+      "name": "resize: no console errors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "cleanup: geometries return to baseline after 6 remounts",
+      "ok": true,
+      "detail": "28 → 28"
+    },
+    {
+      "name": "cleanup: no texture leak",
+      "ok": true,
+      "detail": "1 → 1"
+    },
+    {
+      "name": "cleanup: shader programs do not accumulate",
+      "ok": true,
+      "detail": "7 → 7"
+    },
+    {
+      "name": "cleanup: still exactly one canvas",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "cleanup: JS heap does not grow materially",
+      "ok": true,
+      "detail": "7.1 → 8.1 MB"
+    },
+    {
+      "name": "cleanup: no console errors across remounts",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "context loss: the interface reports it and falls back to the drawing",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "context loss: the static drawing is visible",
+      "ok": true,
+      "detail": "1"
+    },
+    {
+      "name": "context loss: the scene recovers when the context is restored",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "context loss: rendering resumes after restore",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "adaptive DPR: starts at the device pixel ratio (2)",
+      "ok": true,
+      "detail": "2"
+    },
+    {
+      "name": "adaptive DPR: steps down when frames are being missed (software rendering)",
+      "ok": true,
+      "detail": "2 → 1"
+    },
+    {
+      "name": "fallback: renderer switches to \"fallback\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "fallback: the WebGL canvas is removed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "fallback: the static drawing is shown with a notice",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "fallback: selection still works and is reflected in the drawing",
+      "ok": true,
+      "detail": "{\"db\":1,\"fe\":0.16}"
+    },
+    {
+      "name": "fallback: turning the simulation off restores the 3D scene",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "fallback: no console errors",
+      "ok": false,
+      "detail": "log error: Failed to load resource: the server responded with a status of 500 (Internal Server Error)|log error: Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+    },
+    {
+      "name": "no WebGL (desktop): falls back gracefully",
+      "ok": false,
+      "detail": "detecting"
+    },
+    {
+      "name": "no WebGL (desktop): the DOM interface is complete and usable",
+      "ok": false,
+      "detail": ""
+    },
+    {
+      "name": "no WebGL (desktop): notice is shown",
+      "ok": false,
+      "detail": ""
+    },
+    {
+      "name": "no WebGL (desktop): no console errors or exceptions",
+      "ok": false,
+      "detail": "log error: Failed to load resource: the server responded with a status of 500 (Internal Server Error)|log error: Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+    },
+    {
+      "name": "no WebGL (mobile): falls back gracefully",
+      "ok": false,
+      "detail": "detecting"
+    },
+    {
+      "name": "no WebGL (mobile): the DOM interface is complete and usable",
+      "ok": false,
+      "detail": ""
+    },
+    {
+      "name": "no WebGL (mobile): notice is shown",
+      "ok": false,
+      "detail": ""
+    },
+    {
+      "name": "no WebGL (mobile): no console errors or exceptions",
+      "ok": false,
+      "detail": "log error: Failed to load resource: the server responded with a status of 500 (Internal Server Error)|log error: Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+    }
+  ]
+}

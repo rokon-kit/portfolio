@@ -286,3 +286,145 @@ Each decision follows the lightweight ADR structure:
 - **Alternatives Considered:**
   - *Leave the removed elements out:* rejected — it left visible gaps and departed from the approved composition.
   - *Restore the original false content:* rejected — violates AGENTS.md rule 4.
+
+---
+
+## ADR-016: 3D Stack — `three` 0.182 (pinned) + React Three Fiber 9.8, No `drei`
+
+- **Date:** 2026-09-24
+- **Status:** Accepted (completes the deferral in ADR-008)
+- **Context:**
+  Milestone 4 needs a WebGL scene. ADR-008 deferred `three` / `@react-three/fiber` (and the handoff anticipated `@react-three/drei`) to this milestone. Current registry versions were checked and exercised in the browser before choosing.
+- **Decision:**
+  - `three@0.182.0` (**exact pin**, `@types/three@0.182.0`) and `@react-three/fiber@^9.8.0`. `three` 0.183+ logs "THREE.Clock: This module has been deprecated" through R3F 9.8's internal clock, which breaks the "no console warnings" standard; 0.182.0 was verified clean by instantiating the renderer across versions. Revisit when R3F drops `THREE.Clock`.
+  - **`@react-three/drei` is not installed.** The scene needs none of its helpers (no loaders, controls, environment maps or text): camera, picking and labels are small and specific, and the geometry is procedural. This keeps the lazily loaded scene chunk small.
+  - Only `three/examples/jsm/utils/BufferGeometryUtils.js` (`mergeGeometries`) is imported from the examples tree.
+  - The scene is a **client-only, dynamically imported** chunk (`next/dynamic`, `ssr: false`). Verified: the home page (9 scripts) and `/work/courseflow` (8 scripts) contain no script with `WebGLRenderer`.
+- **Consequences:**
+  - *Positive:* The main site's bundle is untouched; no console noise; one fewer dependency tree.
+  - *Negative:* `three` is pinned and must be bumped deliberately.
+- **Alternatives Considered:**
+  - *Install drei "just in case":* rejected — unused dependency.
+  - *Track `three@latest`:* rejected — a console deprecation warning on every load.
+
+---
+
+## ADR-017: The Scene Lab (`/lab/system`) Is Development-Only
+
+- **Date:** 2026-09-24
+- **Status:** Accepted
+- **Context:**
+  The Milestone 4 brief asks for a standalone, development-only route and forbids integrating the scene into portfolio sections yet.
+- **Decision:**
+  - `/lab/system` renders the experience plus a lab control panel (quality tier, motion, pause, fallback simulation, hit-volume overlay, remount, live stats).
+  - Gate: `LAB_ENABLED = NODE_ENV !== 'production' || ENABLE_SCENE_LAB === 'true'` (`src/lib/lab.ts`). When false the page calls `notFound()`. A default production build therefore has **no lab route**; QA against an optimised build sets `ENABLE_SCENE_LAB=true` at build time.
+  - The route is `noindex`, disallowed in `robots.ts` (`/lab/`), and absent from the sitemap.
+  - The debug API (`window.__SYSTEM_SCENE__`) exists only when the lab mounts the experience with `debug` on.
+  - Nothing on `/` or `/work/*` imports the scene.
+- **Consequences:**
+  - *Positive:* No accidental public exposure; the scene can be audited in isolation.
+  - *Negative:* Production QA needs a separate lab-enabled build (documented in `CLAUDE.md`).
+- **Alternatives Considered:**
+  - *Ship the lab publicly but unlinked:* rejected — still indexable/discoverable and outside the milestone.
+
+---
+
+## ADR-018: The Sculpture — "Strata", a Conceptual Reference System
+
+- **Date:** 2026-09-24
+- **Status:** Accepted
+- **Context:**
+  The scene must read as an original architectural sculpture, not a globe, particle sphere, random network or floating laptop, and must let a visitor explore Frontend, Application services, Authentication, Database, Caching, Search and Messaging.
+- **Decision:**
+  - **Form:** a stratified structure, not a graph. A glass **Frontend canopy** with three tilted UI panes sits on four struts above the **Application-services slab** (a manifold and six towers of unequal height). An **Authentication gate** stands at the slab's left; the **Database** is a stepped drum beneath it. To the right: a **Cache** tray of tiles, a **Search** comb of index fins, and above it the **Messaging** racetrack loop. Height encodes request order (client → services → data); depth and the offset of the side systems make an asymmetric silhouette with a clear hierarchy.
+  - **Data flow** is orthogonal, routed conduits with instanced pulses — seven routes (request, authorised, query, cache, search, events, index) that always terminate on module ports. Pulses are forward requests and reverse responses.
+  - **Colour is meaning, from the approved palette:** cyan = client edge, cobalt = services, white = trust boundary (auth), amber = persistence, pale cyan = cache, slate = search, green = messaging. Bodies are near-neutral obsidian with height-gradient shading; colour lives in edges, accents and pulses.
+  - **Content honesty:** each component's copy uses standard engineering terms only (`src/content/system.ts`); `usedIn` links appear only for layers documented in `docs/CONTENT.md`. The lab and the panel always show: *"A conceptual reference system for illustration. It is not the architecture of any employer's production system, and it makes no claim about scale or performance."*
+  - The layout is data (`layout.ts`); positions, ports, routes, focus poses and label offsets are tunable without touching scene code.
+- **Consequences:**
+  - *Positive:* A recognisable identity; the same data drives the 3D scene, the SVG fallback and the tests.
+  - *Negative:* Several modules sit close together; picking needed dedicated design (ADR-021).
+- **Alternatives Considered:**
+  - *Isometric node graph (spheres and lines):* rejected — the generic look the brief bans.
+  - *One monolithic building:* rejected — hides the relationships between systems.
+
+---
+
+## ADR-019: Data-Driven Geometry and an Imperative Runtime
+
+- **Date:** 2026-09-24
+- **Status:** Accepted
+- **Context:**
+  React re-rendering during animation, per-mesh draw calls and duplicated shape definitions are the usual causes of a slow, hard-to-maintain scene.
+- **Decision:**
+  - **Geometry is data.** `modules.ts` describes each module as plain primitives (boxes, discs, with a material class). One builder turns them into merged `BufferGeometry` (≤ 4 draw calls per module: body, glass, accent, edges); the SVG poster and the unit tests read the same data.
+  - **Instancing** for conduits, pulses and glow (one call each).
+  - **One imperative `SceneRuntime`** owns every animated object and is driven from a single `useFrame`. React state never changes while animating; the runtime writes camera, emphasis, conduit and pulse buffers directly.
+  - **State split.** A tiny external store (`store.ts`: mode, selection, hover, epoch) is read by DOM components through `useSyncExternalStore`; the runtime reads it every frame without React. Labels are positioned by writing `transform` on pre-rendered elements.
+  - **Lifecycle.** Geometries, materials and instanced meshes are disposed on unmount; verified by remounting six times (geometries 28 → 28, textures 1 → 1, programs stable, JS heap +15 %).
+- **Consequences:**
+  - *Positive:* ~4,600 triangles and 24–28 draw calls (budget: ≤ 20,000 / < 30); ≈ 0.12 ms scene CPU per frame; no React work per frame.
+  - *Negative:* The runtime is a larger imperative file (~800 lines) that needs its own tests and lint exceptions.
+- **Alternatives Considered:**
+  - *Declarative R3F meshes:* rejected — dozens of objects, per-frame prop updates and no merging.
+  - *drei helpers:* rejected (ADR-016).
+
+---
+
+## ADR-020: Frame Governor, Quality Tiers and Adaptive Resolution
+
+- **Date:** 2026-09-24
+- **Status:** Accepted
+- **Context:**
+  Requirement: prevent uncontrolled GPU usage; simplified mobile scene; reduced motion; no unnecessary work.
+- **Decision:**
+  - `frameloop="demand"`. A single rAF governor calls `invalidate()` only while the stage is on screen (IntersectionObserver), the tab is visible, rendering is not paused and — under reduced motion — only while the camera is still settling. Verified: **0 frames** while scrolled off-screen or paused; rendering resumes on return.
+  - Frame-rate cap 60 fps (desktop tier) / 30 fps (mobile tier).
+  - **Two tiers.** `high`: 56-segment discs, glow sprites, hover, DPR ≤ 2. `low` (viewport < 768 px, a coarse pointer, ≤ 2 CPU cores or ≤ 2 GB reported memory): 28-segment discs, two fewer towers and a sparser canopy grid, half the pulses, no glow, no hover raycasting, DPR 1, 30 fps, padded tap volumes. A lab switch forces either tier for testing; resizing across the breakpoint rebuilds the scene without leaking.
+  - **Adaptive DPR:** starts at min(device ratio, tier cap) and steps down when frames are consistently missed (observed 2 → 1 under software rendering).
+  - **Reduced motion** (`prefers-reduced-motion`, or a lab override): no idle sway, no pointer parallax, camera snaps to each pose, pulses freeze at a fixed frame; the loop renders only while something is settling.
+- **Consequences:**
+  - *Positive:* Negligible idle cost off-screen; predictable mobile cost.
+  - *Negative:* Tier detection is heuristic; real-device tuning is a Milestone 9 item.
+- **Alternatives Considered:**
+  - *R3F's default always-on loop:* rejected — draws while invisible.
+  - *`PerformanceMonitor`-style quality scaling:* rejected — needs drei; a 15-line governor suffices.
+
+---
+
+## ADR-021: Interaction Model — Camera, Picking, Views and Accessible Equivalent
+
+- **Date:** 2026-09-24
+- **Status:** Accepted
+- **Context:**
+  Required states: initial composition, idle motion, pointer exploration, selected component, focused architecture view, return to the original composition; deliberate camera moves; an equivalent accessible DOM interface.
+- **Decision:**
+  - **Camera** is an orbit rig whose pose (target, radius, yaw, pitch) is solved, not eyeballed: `frameBounds` finds the exact radius/target that fits the *real geometry bounds* of what should be visible at the current aspect ratio (overview, architecture view, or one module). Poses ease with exponential damping; no constant spin. Idle sway ±1.3° yaw / ±0.45° pitch, pointer parallax ±3°, drag orbit limited to ±42° yaw / ±14° pitch and reset on return.
+  - **Views.** *Overview* (initial and return) → *Selected* (camera eases to the component, others dim, its routes light, label + panel) → *Architecture* (modules separate along an explode axis, routes re-route on ports, all seven labelled). Return restores the exact original composition (verified by camera comparison).
+  - **Picking** uses invisible volumes that follow each module's geometry (`HIT_VOLUMES`). Two tiers: exact volumes first, nearest wins, solid outranking the glass canopy so towers seen *through* it stay selectable; then, on the mobile tier only, padded finger-sized volumes. A QA pick-map verifies every component owns a contiguous tap target ≥ 24 × 24 CSS px at 1440, 768 and 390 px; unit tests forbid different components' solid volumes from overlapping.
+  - **Accessible equivalent.** The stage is one labelled region; a DOM panel lists all seven components as native buttons (`aria-pressed`, reachable with Tab, activated with Enter/Space), shows the same explanation, disclaimer and "used in" links, and an overview / architecture toggle. Escape returns to the overview. The readout is a polite live region and a separate `role="status"` line announces each state change. Everything the canvas offers is reachable without it.
+  - **Fallbacks.** If WebGL is unavailable, a context is lost, or the scene throws (error boundary), an SVG **poster** — drawn from the same primitives and layout — replaces the canvas and still reflects selection; a restored context brings the 3D scene back.
+- **Consequences:**
+  - *Positive:* The experience is fully operable by keyboard, touch and mouse, and degrades to a real drawing rather than a blank box.
+  - *Negative:* The poster is a projection of the model, so it must be re-checked when geometry changes (covered by unit tests over the shared data).
+- **Alternatives Considered:**
+  - *`OrbitControls`-style free camera:* rejected — a visitor can lose the composition; the brief asks for deliberate transitions.
+  - *Picking by GPU colour buffer:* rejected — extra render pass; analytic volumes are cheaper and testable.
+
+---
+
+## ADR-022: Deliberate Deviations from `DESIGN_SYSTEM.md` §6 (3D Art Direction)
+
+- **Date:** 2026-09-24
+- **Status:** Accepted
+- **Context:**
+  §6 specifies ambient `#0B132B` @ 0.6, cyan key `#38BDF8` @ 1.8 "casting long geometric shadows", amber rim `#F59E0B` @ 0.8, a 3° passive float, and a scroll-scrub assembly. Built literally, the spec crushed the obsidian bodies to black in the shadow side and saturated the cobalt/cyan surfaces; it also implies a shadow pass.
+- **Decision:** Keep the specified *roles* (cool ambient, cyan key, amber rim, glass + obsidian, wireframe edges, ≤ 20k polygons, DPR 1 on mobile) and change values:
+  - Lights: ambient `#3A425A` @ 0.5, hemisphere `#4A5A85`/`#06080C` @ 0.5, cyan key @ 1.35, amber rim @ 0.5, neutral fill `#A9B8D8` @ 0.35; fog `#12161F` 30–70.
+  - **No shadow maps** (a second geometry pass would cost draw calls and mobile GPU time). Depth comes from the height-gradient vertex colours, edge outlines and the ground grid.
+  - Idle sway is ±1.3° yaw (tuned to be visible but calm); scroll-scrub assembly is **not built** — it belongs to the page-integration milestones (M5/M8).
+- **Consequences:**
+  - *Positive:* Readable forms, no crushed blacks, fewer passes.
+  - *Negative:* `DESIGN_SYSTEM.md` §6 numbers are now a starting point; the code (`SceneRuntime.ts`, `materials.ts`) is the source of truth for lighting.
+- **Alternatives Considered:**
+  - *Implement the spec literally:* rejected after visual review (see `docs/qa/m4/`).

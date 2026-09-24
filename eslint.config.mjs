@@ -15,6 +15,14 @@ export default defineConfig([
       'jsx-a11y/no-autofocus': 'error',
     },
   },
+  {
+    // Scene code drives three.js objects imperatively inside the frame loop; the React-compiler
+    // style immutability rule does not model that, and R3F elements use non-DOM props.
+    files: ['src/components/canvas/**/*.{ts,tsx}'],
+    rules: {
+      'react/no-unknown-property': 'off',
+    },
+  },
   globalIgnores([
     '.next/**',
     'out/**',

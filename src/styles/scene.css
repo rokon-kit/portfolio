@@ -1,0 +1,335 @@
+/*
+ * SCENE — the "Strata" system sculpture (Milestone 4) and its development laboratory.
+ * Reuses the approved viewport frame, HUD, layer buttons, node buttons and readout panel styles.
+ */
+
+.system-experience {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.system-figure {
+  min-width: 0;
+}
+
+.system-stage {
+  position: relative;
+  width: 100%;
+  /* Reserved aspect ratio: no layout shift when the canvas replaces the poster. */
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(56, 189, 248, 0.09) 0%, rgba(56, 189, 248, 0) 62%),
+    var(--color-surface);
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.system-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 3% 4%;
+  transition: opacity 0.7s var(--ease-blueprint);
+}
+
+.system-experience[data-scene-renderer='ready'] .system-poster {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.system-poster-label {
+  font-family: var(--font-mono);
+  font-size: 0.5px;
+  font-weight: 600;
+  letter-spacing: 0.04px;
+  fill: var(--color-text-primary);
+}
+
+/* DOM labels projected over 3D anchors (positions are written by the scene loop). */
+.system-labels {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.system-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 0.25s var(--ease-blueprint);
+  will-change: transform;
+}
+
+.system-label[data-visible='true'] {
+  opacity: 1;
+}
+
+.system-label-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  white-space: nowrap;
+  transform: translate(-50%, -150%);
+}
+
+.system-fallback-note {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  margin: 0;
+  padding: 8px 12px;
+  background: rgba(11, 14, 20, 0.88);
+  border: 1px solid var(--color-border-active);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.system-controls {
+  flex-wrap: wrap;
+}
+
+.system-hint {
+  letter-spacing: 0.06em;
+}
+
+.system-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.system-detail {
+  min-height: 300px;
+}
+
+.system-kind {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent-cyan);
+}
+
+.system-role {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.system-facts {
+  display: flex;
+  flex-direction: column;
+}
+
+.system-concerns {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.system-concerns li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.system-concerns li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 8px;
+  height: 1.5px;
+  background: var(--color-accent-cyan);
+}
+
+.system-concerns strong {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--color-text-primary);
+}
+
+.system-note {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+}
+
+.system-disclaimer {
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+button.used-in-link {
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------------- */
+/* LABORATORY (development only)                                     */
+/* ---------------------------------------------------------------- */
+.lab {
+  padding: 40px 0 96px;
+}
+
+.lab-banner {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: 0.1em;
+  color: var(--color-accent-amber);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+}
+
+.lab-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.lab-intro {
+  max-width: 760px;
+  font-size: var(--text-body-lg);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: 32px;
+}
+
+.lab-panel {
+  margin-top: 28px;
+  padding: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.lab-heading {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-accent-cyan);
+  margin-bottom: 14px;
+}
+
+.lab-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px 24px;
+}
+
+.lab-control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.lab-control-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+}
+
+.lab-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 10px;
+}
+
+.lab-stat {
+  padding: 10px 12px;
+  background: var(--color-console);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.lab-stat dt {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+}
+
+.lab-stat dd {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-top: 2px;
+  overflow-wrap: anywhere;
+}
+
+.lab-stat dd[data-ok='true'] {
+  color: var(--color-accent-green);
+}
+
+.lab-stat dd[data-ok='false'] {
+  color: var(--color-accent-amber);
+}
+
+.lab-note {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  color: var(--color-text-dim);
+}
+
+/* ---------------------------------------------------------------- */
+/* RESPONSIVE                                                        */
+/* ---------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  .system-experience {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .system-stage {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 639px) {
+  .system-stage {
+    aspect-ratio: 5 / 6;
+  }
+
+  .system-poster {
+    padding: 6% 2%;
+  }
+
+  .lab {
+    padding: 20px 0 64px;
+  }
+
+  .lab-panel {
+    padding: 16px 14px;
+  }
+}
