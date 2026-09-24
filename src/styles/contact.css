@@ -1,0 +1,276 @@
+/*
+ * CONTACT — channels, resume plate, message form.
+ * Ported from prototype/styles.css. Form focus now uses the global focus ring in
+ * addition to the border/glow, and labels/inputs meet 44px hit areas.
+ */
+
+.contact-dossier-card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 40px;
+}
+
+.contact-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 48px;
+}
+
+.contact-channels-col,
+.contact-form-col {
+  min-width: 0;
+}
+
+.channels-header,
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+}
+
+.channel-code,
+.form-code {
+  color: var(--color-accent-cyan);
+}
+.channel-loc,
+.form-status {
+  color: var(--color-text-dim);
+}
+
+.channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.channel-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 64px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-subtle);
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+
+.channel-item:hover {
+  border-color: var(--color-accent-cyan);
+  background: rgba(56, 189, 248, 0.06);
+  transform: translateX(4px);
+}
+
+.channel-icon-box {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.channel-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.channel-title {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-text-dim);
+}
+
+.channel-value {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  overflow-wrap: anywhere;
+}
+
+.channel-arrow {
+  color: var(--color-accent-cyan);
+  font-family: var(--font-mono);
+}
+
+/* Resume plate */
+.resume-download-plate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 16px;
+  flex-wrap: wrap;
+  background: rgba(11, 14, 20, 0.6);
+  border: 1px solid var(--color-border-subtle);
+  padding: 16px 20px;
+  border-radius: var(--radius-sm);
+}
+
+.plate-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-plate-title {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.plate-desc {
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+}
+
+/* Form */
+.blueprint-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.req {
+  color: var(--color-accent-cyan);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  min-height: 44px;
+  background: var(--color-console);
+  border: 1px solid var(--color-border-medium);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-dim);
+  opacity: 1;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--color-accent-cyan);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+.form-input[aria-invalid='true'],
+.form-textarea[aria-invalid='true'] {
+  border-color: var(--color-accent-amber);
+}
+
+.form-error {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent-amber);
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.form-disclaimer,
+.form-note {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-text-dim);
+}
+
+/* Only the actions row is a flex row; a flex-basis here would inflate the column form. */
+.form-actions .form-disclaimer {
+  flex: 1 1 220px;
+}
+
+/* Live region for the post-submit message: collapses fully when empty. */
+.form-note:empty {
+  margin-top: -20px;
+}
+
+@media (max-width: 1023px) {
+  .contact-split-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-dossier-card {
+    padding: 20px 16px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-submit-transmission,
+  .btn-resume-download {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .resume-download-plate {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

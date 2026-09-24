@@ -1,0 +1,302 @@
+/*
+ * UI PRIMITIVES — corner crosshairs, buttons, pills, badges, metric tiles.
+ * Ported from prototype/styles.css with 44px minimum hit areas added.
+ */
+
+/* ---------------------------------------------------------------- */
+/* ARCHITECTURAL CORNER CROSSHAIRS                                   */
+/* ---------------------------------------------------------------- */
+.corner-crosshair {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.corner-crosshair::before,
+.corner-crosshair::after {
+  content: '';
+  position: absolute;
+  background-color: var(--color-accent-cyan);
+  opacity: 0.6;
+}
+
+.corner-crosshair.top-left {
+  top: -1px;
+  left: -1px;
+}
+.corner-crosshair.top-left::before { top: 0; left: 0; width: 8px; height: 1.5px; }
+.corner-crosshair.top-left::after  { top: 0; left: 0; width: 1.5px; height: 8px; }
+
+.corner-crosshair.top-right {
+  top: -1px;
+  right: -1px;
+}
+.corner-crosshair.top-right::before { top: 0; right: 0; width: 8px; height: 1.5px; }
+.corner-crosshair.top-right::after  { top: 0; right: 0; width: 1.5px; height: 8px; }
+
+.corner-crosshair.bottom-left {
+  bottom: -1px;
+  left: -1px;
+}
+.corner-crosshair.bottom-left::before { bottom: 0; left: 0; width: 8px; height: 1.5px; }
+.corner-crosshair.bottom-left::after  { bottom: 0; left: 0; width: 1.5px; height: 8px; }
+
+.corner-crosshair.bottom-right {
+  bottom: -1px;
+  right: -1px;
+}
+.corner-crosshair.bottom-right::before { bottom: 0; right: 0; width: 8px; height: 1.5px; }
+.corner-crosshair.bottom-right::after  { bottom: 0; right: 0; width: 1.5px; height: 8px; }
+
+/* ---------------------------------------------------------------- */
+/* BUTTONS                                                           */
+/* ---------------------------------------------------------------- */
+.btn-primary,
+.btn-secondary,
+.btn-ghost,
+.btn-dossier-repo,
+.btn-dossier-subrepo,
+.btn-dossier-case,
+.btn-resume-download,
+.btn-submit-transmission {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  cursor: pointer;
+}
+
+.btn-primary {
+  gap: 10px;
+  background-color: var(--color-accent-cyan);
+  color: var(--color-canvas);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 12px 22px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-accent-cyan);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-cyan-hover);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--color-text-primary);
+  font-size: 0.8125rem;
+  letter-spacing: 0.05em;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-medium);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-accent-cyan);
+  background-color: rgba(56, 189, 248, 0.08);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+  padding: 12px 14px;
+}
+
+.btn-ghost:hover {
+  color: var(--color-text-primary);
+}
+
+.btn-dossier-repo {
+  gap: 8px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-medium);
+  color: var(--color-text-primary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+}
+
+.btn-dossier-repo:hover {
+  border-color: var(--color-accent-cyan);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.btn-dossier-subrepo,
+.btn-dossier-case {
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-subtle);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+}
+
+.btn-dossier-subrepo:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-border-medium);
+}
+
+.btn-dossier-case:hover {
+  color: var(--color-accent-cyan);
+  border-color: var(--color-accent-cyan);
+}
+
+.btn-resume-download {
+  gap: 8px;
+  background: var(--color-accent-cyan);
+  color: var(--color-canvas);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+}
+
+.btn-resume-download:hover {
+  background: var(--color-accent-cyan-hover);
+}
+
+.btn-submit-transmission {
+  gap: 10px;
+  background: var(--color-accent-cyan);
+  color: var(--color-canvas);
+  border: none;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+}
+
+.btn-submit-transmission:hover {
+  background: var(--color-accent-cyan-hover);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+}
+
+.dossier-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 14px;
+}
+
+/* ---------------------------------------------------------------- */
+/* PILLS & BADGES                                                    */
+/* ---------------------------------------------------------------- */
+.tech-stack-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tech-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-secondary);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.sys-status {
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.6875rem;
+  white-space: nowrap;
+}
+
+.sys-status.tone-green {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--color-accent-green);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.sys-status.tone-cyan {
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--color-accent-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.sys-status.tone-amber {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--color-accent-amber);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* ---------------------------------------------------------------- */
+/* METRIC TILES                                                      */
+/* ---------------------------------------------------------------- */
+.hero-telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.telemetry-metric-tile {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  padding: 14px 12px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.tile-number {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.tile-label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-dim);
+  margin-top: 4px;
+}
+
+@media (max-width: 767px) {
+  .hero-telemetry-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .btn-dossier-repo,
+  .btn-dossier-subrepo,
+  .btn-dossier-case {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .dossier-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Reduced motion: hover lifts become colour-only changes. */
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .interactive-node:hover,
+  .channel-item:hover {
+    transform: none !important;
+  }
+}

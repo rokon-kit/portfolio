@@ -1,0 +1,153 @@
+/*
+ * BACKGROUND — experience and education record cards.
+ * New in Milestone 3: docs/CONTENT.md requires the Barcodetech Automation internship
+ * to be featured prominently and the approved prototype omitted it. Built entirely
+ * from existing design language (dossier card, crosshairs, mono metadata).
+ */
+
+.record-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+.record-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  min-width: 0;
+  transition: border-color 0.3s var(--ease-blueprint);
+}
+
+.record-card:hover {
+  border-color: var(--color-border-active);
+}
+
+.record-code {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+}
+
+.record-kind {
+  color: var(--color-accent-cyan);
+  letter-spacing: 0.1em;
+}
+
+.record-period {
+  color: var(--color-text-dim);
+}
+
+.record-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.record-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-accent-amber);
+  margin-bottom: 16px;
+}
+
+.record-text {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.record-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.record-list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.55;
+}
+
+.record-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 8px;
+  height: 1.5px;
+  background: var(--color-accent-cyan);
+}
+
+.record-facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 14px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.record-certs-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-dim);
+  margin-bottom: 10px;
+}
+
+.record-certs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.record-certs li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 16px;
+  flex-wrap: wrap;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.record-certs .cert-period {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+}
+
+@media (max-width: 1023px) {
+  .record-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .record-card {
+    padding: 20px 16px;
+  }
+}

@@ -24,6 +24,8 @@ Software engineering is the architecture of the digital era. Just as architectur
 
 The color system rejects generic purple/neon gradients in favor of an architectural drafting palette: high-contrast dark slate substrates, warm drafting paper tones, precision blueprint cyan, and tactical amber status lights.
 
+> **Milestone 3 corrections (ADR-010):** contrast ratios below were recomputed with the WCAG formula (the earlier 14.8:1 / 7.2:1 / 4.6:1 figures were inaccurate). `--color-text-dim` was `#64748B`, which measures 4.06:1 on canvas and fails AA; it is now `#7C8BA1`. Implemented in `src/styles/tokens.css` (single source of truth for the application).
+
 ### Primary Palette (Tokens)
 | Token Name | Hex Value | Semantic Role | Contrast Ratio against #0B0E14 |
 |---|---|---|---|
@@ -32,9 +34,9 @@ The color system rejects generic purple/neon gradients in favor of an architectu
 | `--color-surface-elevated` | `#181D27` | Dossier cards, modals, and telemetry containers | 1.35:1 |
 | `--color-border-subtle` | `rgba(255, 255, 255, 0.08)` | Structural grid hairlines and divider rules | N/A |
 | `--color-border-active` | `rgba(56, 189, 248, 0.35)` | Interactive hover borders and active module focus | N/A |
-| `--color-text-primary` | `#F1F5F9` | Display headlines and primary narrative text (Drafting Paper White) | **14.8:1** (WCAG AAA) |
-| `--color-text-secondary` | `#94A3B8` | Body paragraphs, article descriptions, and sub-headings | **7.2:1** (WCAG AAA) |
-| `--color-text-dim` | `#64748B` | System metadata, timestamps, and architectural coordinates | **4.6:1** (WCAG AA) |
+| `--color-text-primary` | `#F1F5F9` | Display headlines and primary narrative text (Drafting Paper White) | **17.63:1** (WCAG AAA) |
+| `--color-text-secondary` | `#94A3B8` | Body paragraphs, article descriptions, and sub-headings | **7.53:1** (WCAG AAA) |
+| `--color-text-dim` | `#7C8BA1` | System metadata, timestamps, and architectural coordinates | **5.58:1** canvas / 5.23:1 surface / 4.88:1 elevated (WCAG AA) |
 
 ### Accent & Telemetry Palette
 | Token Name | Hex Value | Role & Usage |
@@ -57,19 +59,19 @@ The color system rejects generic purple/neon gradients in favor of an architectu
    - *Purpose:* Architectural coordinates (`LAT 23.81° N / LON 90.41° E`), tech stack tags, database schema properties, and telemetry metrics.
 
 ### Fluid Modular Type Scale
-All sizes use fluid CSS `clamp()` to scale proportionally across mobile (375px), tablet (768px), and desktop (1440px+):
+All sizes use fluid CSS `clamp()` to scale proportionally across mobile (320px+), tablet (768px), and desktop (1440px+). Values below match the approved prototype CSS (aligned in Milestone 3; ADR-009):
 
 ```css
 :root {
-  --font-display: 'Newsreader', 'Playfair Display', Georgia, serif;
+  --font-display: 'Newsreader', Georgia, serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
 
-  --text-display: clamp(2.5rem, 5vw + 1rem, 4.5rem);       /* Hero headline */
-  --text-h1:      clamp(2.0rem, 3.5vw + 0.75rem, 3.25rem);  /* Section titles */
-  --text-h2:      clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);   /* Subsection headers */
-  --text-h3:      clamp(1.2rem, 1.5vw + 0.5rem, 1.5rem);    /* Card / Dossier titles */
-  --text-body-lg: clamp(1.0625rem, 1vw + 0.5rem, 1.25rem);  /* Hero subheadings */
+  --text-display: clamp(2.5rem, 4.5vw + 1rem, 4.25rem);     /* Hero headline */
+  --text-h1:      clamp(2rem, 3.2vw + 0.75rem, 3.25rem);    /* Section titles */
+  --text-h2:      clamp(1.5rem, 2.2vw + 0.5rem, 2.25rem);   /* Subsection headers */
+  --text-h3:      clamp(1.2rem, 1.4vw + 0.5rem, 1.65rem);   /* Card / Dossier titles */
+  --text-body-lg: clamp(1.0625rem, 0.9vw + 0.5rem, 1.25rem); /* Hero subheadings */
   --text-body:    1rem;                                     /* Standard body copy (16px) */
   --text-sm:      0.875rem;                                 /* Supporting text (14px) */
   --text-meta:    0.75rem;                                  /* Monospace telemetry (12px) */

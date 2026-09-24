@@ -1,0 +1,19 @@
+/*
+ * Global stylesheet entry point.
+ * Tailwind provides the reset and utilities; design tokens live in tokens.css;
+ * component CSS (ported from the approved Milestone 2 prototype) is layered as
+ * `components` so Tailwind utilities can still override it.
+ */
+@import 'tailwindcss';
+
+@import '../styles/tokens.css';
+@import '../styles/base.css' layer(base);
+
+@import '../styles/layout.css' layer(components);
+@import '../styles/ui.css' layer(components);
+@import '../styles/hero.css' layer(components);
+@import '../styles/works.css' layer(components);
+@import '../styles/background.css' layer(components);
+@import '../styles/topology.css' layer(components);
+@import '../styles/contact.css' layer(components);
+@import '../styles/states.css' layer(components);

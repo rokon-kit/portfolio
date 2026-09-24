@@ -1,0 +1,123 @@
+/* BASE — document defaults, accessibility primitives, reduced motion. */
+
+:root {
+  color-scheme: dark;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --pad-gutter: 1.125rem;
+    --rail-height: 60px;
+  }
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--color-canvas);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--rail-height) + 16px);
+}
+
+/* Smooth in-page scrolling only when the visitor has not asked for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-canvas);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  position: relative;
+  min-height: 100vh;
+  /* Safety net only: layout is verified not to overflow (see docs/QA_REPORTS.md). */
+  overflow-x: clip;
+}
+
+/* Subtle architectural grid background. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s var(--ease-blueprint);
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.3);
+  color: var(--color-text-primary);
+}
+
+/* Visible keyboard focus everywhere (WCAG 2.4.7). */
+:focus-visible {
+  outline: 2px solid var(--color-accent-cyan);
+  outline-offset: 3px;
+}
+
+/* Skip link — first focusable element on every page. */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 2000;
+  padding: 12px 18px;
+  background: var(--color-accent-cyan);
+  color: var(--color-canvas);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Visually hidden but available to assistive technology. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* The main landmark is a programmatic focus target for the skip link only. */
+main:focus {
+  outline: none;
+}
+
+/*
+ * Reduced motion: no smooth scrolling, no looping animation, no positional
+ * transitions — state changes become instant (docs/DESIGN_SYSTEM.md §7).
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

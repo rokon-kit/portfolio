@@ -1,0 +1,85 @@
+/* STATES — loading, error and not-found screens, styled as blueprint plates. */
+
+.state-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--rail-height) - 160px);
+  padding: 64px var(--pad-gutter);
+}
+
+.state-plate {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-active);
+  border-radius: var(--radius-md);
+  padding: 36px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.state-code {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: 0.12em;
+  color: var(--color-accent-amber);
+  margin-bottom: 12px;
+}
+
+.state-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.state-text {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.state-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.state-actions button {
+  cursor: pointer;
+}
+
+.state-bar {
+  height: 2px;
+  margin-top: 24px;
+  background: var(--color-border-subtle);
+  overflow: hidden;
+}
+
+.state-bar::after {
+  content: '';
+  display: block;
+  width: 35%;
+  height: 100%;
+  background: var(--color-accent-cyan);
+  animation: state-sweep 1.4s var(--ease-blueprint) infinite;
+}
+
+@keyframes state-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+
+@media (max-width: 767px) {
+  .state-plate {
+    padding: 24px 18px;
+  }
+}

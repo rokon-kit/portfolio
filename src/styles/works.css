@@ -1,0 +1,449 @@
+/*
+ * WORKS — System Dossier cards, schematic plates, case-study pages.
+ * Ported from prototype/styles.css. `.plate-title` was defined twice in the
+ * prototype (schematic HUD vs. resume plate) and the later rule silently won;
+ * the rendered (approved) look is preserved and scoped explicitly here.
+ */
+
+.dossiers-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.system-dossier-card {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 36px;
+  transition: border-color 0.3s var(--ease-blueprint);
+}
+
+.system-dossier-card:hover {
+  border-color: var(--color-border-active);
+}
+
+.dossier-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.dossier-specs-col,
+.dossier-diagram-col {
+  min-width: 0;
+}
+
+.dossier-header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+}
+
+.sys-code {
+  color: var(--color-accent-cyan);
+  letter-spacing: 0.1em;
+}
+
+.dossier-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+}
+
+.challenge-solution-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.cs-box {
+  background: rgba(11, 14, 20, 0.6);
+  border: 1px solid var(--color-border-subtle);
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+}
+
+.cs-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.problem-box .cs-label {
+  color: var(--color-accent-amber);
+}
+.solution-box .cs-label {
+  color: var(--color-accent-cyan);
+}
+
+.cs-text {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.impact-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  margin-bottom: 24px;
+}
+
+.impact-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.impact-key {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--color-text-dim);
+}
+
+.impact-val {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-top: 2px;
+}
+
+/* ---------------------------------------------------------------- */
+/* SCHEMATIC PLATES                                                  */
+/* ---------------------------------------------------------------- */
+.schematic-plate {
+  background: var(--color-plate);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.plate-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px 12px;
+  flex-wrap: wrap;
+  padding: 8px 14px;
+  background: rgba(18, 22, 31, 0.8);
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+}
+
+.schematic-plate .plate-title {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.plate-tag {
+  color: var(--color-text-dim);
+}
+
+/* The diagrams have a fixed native width; on narrow screens the plate scrolls instead of shrinking text. */
+.schematic-canvas-box {
+  padding: 12px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.schematic-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.plate-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px 12px;
+  flex-wrap: wrap;
+  padding: 8px 14px;
+  background: rgba(18, 22, 31, 0.8);
+  border-top: 1px solid var(--color-border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-text-dim);
+}
+
+.plate-scroll-hint {
+  display: none;
+}
+
+@media (max-width: 559px) {
+  .schematic-svg {
+    min-width: 440px;
+  }
+
+  /* Visual cue only — the scroll region itself is keyboard-focusable and labelled. */
+  .plate-scroll-hint {
+    display: block;
+    padding: 0 14px 10px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.06em;
+    color: var(--color-text-dim);
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* CASE-STUDY PAGE                                                   */
+/* ---------------------------------------------------------------- */
+.case-study {
+  padding: 40px 0 96px;
+}
+
+.case-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.case-breadcrumb:hover {
+  color: var(--color-accent-cyan);
+}
+
+.case-header {
+  max-width: 900px;
+  margin-bottom: 48px;
+}
+
+.case-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin-bottom: 20px;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.case-main,
+.case-aside {
+  min-width: 0;
+}
+
+.case-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.case-block {
+  margin-bottom: 40px;
+}
+
+.case-heading {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-accent-cyan);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.case-heading.amber {
+  color: var(--color-accent-amber);
+}
+
+.case-text {
+  font-size: var(--text-body-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+.case-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.case-list li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.case-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 8px;
+  height: 1.5px;
+  background: var(--color-accent-cyan);
+}
+
+.case-facts {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.case-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 72px;
+  padding-top: 32px;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.case-pager-link {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 44px;
+  padding: 16px 18px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.case-pager-link:hover {
+  border-color: var(--color-accent-cyan);
+  background: rgba(56, 189, 248, 0.06);
+}
+
+.case-pager-link.next {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.case-pager-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-dim);
+}
+
+.case-pager-title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+}
+
+/* ---------------------------------------------------------------- */
+/* RESPONSIVE                                                        */
+/* ---------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  .dossier-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .case-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+  .system-dossier-card {
+    padding: 18px 16px;
+  }
+
+  .dossier-header-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .challenge-solution-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .impact-metrics-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .case-study {
+    padding: 20px 0 64px;
+  }
+
+  .case-pager {
+    grid-template-columns: 1fr;
+    margin-top: 48px;
+  }
+
+  .case-pager-link.next {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* FIGURE TEXT (SVG) — design-system fonts and colours               */
+/* ---------------------------------------------------------------- */
+.fig-mono {
+  font-family: var(--font-mono);
+}
+.fig-sans {
+  font-family: var(--font-sans);
+}
+.fig-bold {
+  font-weight: 600;
+}
+.fig-primary {
+  fill: var(--color-text-primary);
+}
+.fig-secondary {
+  fill: var(--color-text-secondary);
+}
+.fig-dim {
+  fill: var(--color-text-dim);
+}
+.fig-cyan {
+  fill: var(--color-accent-cyan);
+}
+.fig-amber {
+  fill: var(--color-accent-amber);
+}
+.fig-green {
+  fill: var(--color-accent-green);
+}

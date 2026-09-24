@@ -1,0 +1,322 @@
+/*
+ * ARCHITECTURE INSPECTOR — layer list + readout panel.
+ * Ported from prototype/styles.css. Layers are real <button>s; the prototype's
+ * fabricated code block is replaced by "used in" links to the case studies.
+ */
+
+.topology-console-deck {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-active);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.console-controls-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  padding: 14px 20px;
+  background: var(--color-console);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.console-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.console-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent-cyan);
+  box-shadow: 0 0 10px var(--color-accent-cyan);
+}
+
+.console-heading {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-text-primary);
+}
+
+.console-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.console-tab {
+  background: none;
+  border: 1px solid var(--color-border-medium);
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  min-height: 32px;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.console-tab:hover,
+.console-tab[aria-pressed='true'] {
+  background: rgba(56, 189, 248, 0.12);
+  border-color: var(--color-accent-cyan);
+  color: var(--color-accent-cyan);
+}
+
+.topology-display-stage {
+  padding: 24px;
+}
+
+.telemetry-screen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.node-tree-panel,
+.node-readout-panel {
+  min-width: 0;
+}
+
+.node-tree-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-dim);
+  margin-bottom: 4px;
+}
+
+.interactive-node {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-subtle);
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: inherit;
+  transition: all 0.2s var(--ease-blueprint);
+}
+
+.interactive-node:hover,
+.interactive-node[aria-pressed='true'] {
+  border-color: var(--color-accent-cyan);
+  background: rgba(56, 189, 248, 0.06);
+  transform: translateX(4px);
+}
+
+.node-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.node-indicator {
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-text-dim);
+}
+
+.interactive-node[aria-pressed='true'] .node-indicator {
+  background: var(--color-accent-cyan);
+  box-shadow: 0 0 6px var(--color-accent-cyan);
+}
+
+.node-title {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.node-desc {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  padding-left: 16px;
+}
+
+/* Readout panel */
+.node-readout-panel {
+  background: var(--color-console);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.readout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+}
+
+.readout-label {
+  color: var(--color-text-dim);
+}
+.readout-id {
+  color: var(--color-accent-cyan);
+  font-weight: 600;
+}
+
+.readout-content {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex-grow: 1;
+}
+
+.readout-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding-bottom: 8px;
+}
+
+.stat-name {
+  color: var(--color-text-dim);
+  flex-shrink: 0;
+}
+.stat-val {
+  color: var(--color-text-primary);
+  font-weight: 500;
+  text-align: right;
+}
+.stat-val.highlight-cyan {
+  color: var(--color-accent-cyan);
+}
+.stat-val.highlight-green {
+  color: var(--color-accent-green);
+}
+
+.readout-used {
+  margin-top: 6px;
+}
+
+.readout-used-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--color-text-dim);
+  margin-bottom: 8px;
+}
+
+.readout-used-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.used-in-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent-cyan);
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.used-in-link:hover {
+  border-color: var(--color-accent-cyan);
+  background: rgba(56, 189, 248, 0.16);
+}
+
+.readout-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px 12px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid var(--color-border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-text-dim);
+}
+
+@media (max-width: 1023px), (pointer: coarse) {
+  .console-tab {
+    min-height: 44px;
+  }
+
+  .used-in-link {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .telemetry-screen {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .console-controls-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 14px;
+  }
+
+  .console-tabs {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .console-tab {
+    flex: 1 1 100%;
+    text-align: center;
+    padding: 8px 6px;
+  }
+
+  .topology-display-stage {
+    padding: 16px 12px;
+  }
+
+  .readout-stat-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stat-val {
+    text-align: left;
+  }
+}
