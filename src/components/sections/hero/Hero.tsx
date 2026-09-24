@@ -44,7 +44,7 @@ export function Hero() {
                 <span className="ethos-icon" aria-hidden="true">❖</span>
                 <span className="ethos-title">CORE ENGINEERING ETHOS</span>
               </figcaption>
-              <blockquote className="ethos-quote">“{profile.ethos.quote}”</blockquote>
+              <blockquote className="ethos-quote">{`"${profile.ethos.quote}"`}</blockquote>
               <p className="ethos-footer">{profile.ethos.focus}</p>
             </figure>
 

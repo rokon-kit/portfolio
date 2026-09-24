@@ -167,6 +167,15 @@
   /* Reserved aspect ratio — no layout shift when the scene is swapped for WebGL. */
   aspect-ratio: 520 / 380;
   background: radial-gradient(circle at center, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+  /* Drag to rotate; vertical swipes still scroll the page on touch screens. */
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.viewport-canvas-container:active {
+  cursor: grabbing;
 }
 
 .scene-svg {
@@ -343,12 +352,4 @@
   to {
     transform: translateY(6px);
   }
-}
-
-.blueprint-callout[data-hidden='true'] {
-  opacity: 0.25;
-}
-
-.blueprint-callout {
-  transition: opacity 0.3s var(--ease-blueprint);
 }

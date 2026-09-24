@@ -21,6 +21,10 @@ export const layers: readonly Layer[] = [
       { name: 'STYLING', value: 'Tailwind CSS · CSS Modules · CSS Grid & Flexbox' },
       { name: 'INTERACTION', value: 'GSAP · ScrollTrigger · Three.js · React Three Fiber', tone: 'green' },
     ],
+    illustration: {
+      caption: '// Illustrative example — a typed component contract',
+      code: 'interface LayerCardProps {\n  readonly title: string;\n  readonly selected: boolean;\n  onSelect: () => void;\n}',
+    },
     usedIn: ['volunteering-platform', 'courseflow'],
   },
   {
@@ -35,12 +39,16 @@ export const layers: readonly Layer[] = [
       { name: 'PATTERNS', value: 'RESTful API design · MVC · Layered architecture' },
       { name: 'ARCHITECTURE', value: 'Microservices fundamentals', tone: 'green' },
     ],
+    illustration: {
+      caption: '// Illustrative example — a Spring REST controller',
+      code: '@RestController\n@RequestMapping("/api/events")\npublic class EventController {\n  @GetMapping\n  public List<EventDto> list() { ... }\n}',
+    },
     usedIn: ['volunteering-platform', 'courseflow'],
   },
   {
     id: 'security',
     view: 'security',
-    title: '03. SPRING SECURITY & JWT',
+    title: '03. SPRING SECURITY & JWT FILTER',
     shortName: 'AUTH & SECURITY',
     blurb: 'Spring Security, JWT and bcrypt hashing with role-based access control.',
     readouts: [
@@ -49,12 +57,16 @@ export const layers: readonly Layer[] = [
       { name: 'ACCESS MODEL', value: 'Role-based access control (RBAC)' },
       { name: 'ALSO', value: 'bcrypt hashing · OAuth2 concepts', tone: 'green' },
     ],
+    illustration: {
+      caption: '// Illustrative example — role-based route rules',
+      code: 'http.authorizeHttpRequests(auth -> auth\n  .requestMatchers("/api/admin/**")\n  .hasRole("ADMIN")\n  .anyRequest().authenticated());',
+    },
     usedIn: ['volunteering-platform'],
   },
   {
     id: 'storage',
     view: 'persistence',
-    title: '04. DATABASE & PERSISTENCE',
+    title: '04. DATABASE & PERSISTENCE TIER',
     shortName: 'PERSISTENCE',
     blurb: 'PostgreSQL, MySQL and MongoDB; normalized schemas, indexing and transactional consistency.',
     readouts: [
@@ -63,6 +75,10 @@ export const layers: readonly Layer[] = [
       { name: 'QUERYING', value: 'Complex joins · indexing' },
       { name: 'INTEGRITY', value: 'Transactional sign-ups (PostgreSQL)', tone: 'green' },
     ],
+    illustration: {
+      caption: '-- Illustrative example — a relational join table',
+      code: 'CREATE TABLE registrations (\n  user_id  BIGINT REFERENCES users(id),\n  event_id BIGINT REFERENCES events(id),\n  PRIMARY KEY (user_id, event_id)\n);',
+    },
     usedIn: ['volunteering-platform', 'courseflow'],
   },
 ];

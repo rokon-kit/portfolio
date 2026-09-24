@@ -87,6 +87,7 @@ async function openPage(width, height, mobile) {
     await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x, y, button: 'left', clickCount: 1 });
     return true;
   };
+  const mouse = (type, x, y) => send('Input.dispatchMouseEvent', { type, x, y, button: type === 'mouseMoved' ? 'none' : 'left', clickCount: 1 });
   const key = async (k, mods = 0) => {
     const map = { Tab: { key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 }, Escape: { key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 }, Enter: { key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 } }[k];
     await send('Input.dispatchKeyEvent', { type: 'keyDown', modifiers: mods, ...map });
@@ -95,7 +96,7 @@ async function openPage(width, height, mobile) {
   const type = async (text) => { for (const ch of text) { await send('Input.dispatchKeyEvent', { type: 'keyDown', text: ch, key: ch }); await send('Input.dispatchKeyEvent', { type: 'keyUp', key: ch }); } };
   const goto = async (path, wait = 2200) => { await send('Page.navigate', { url: BASE + path }); await sleep(wait); };
   const shot = async (name, full = false) => { const r = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: full, fromSurface: true }); writeFileSync(`${OUT}/${name}.png`, Buffer.from(r.result.data, 'base64')); };
-  return { send, ev, rect, click, clickAt, key, type, goto, shot, log, close: () => ws.close() };
+  return { send, ev, rect, click, clickAt, mouse, key, type, goto, shot, log, close: () => ws.close() };
 }
 
 const report = {};
@@ -191,10 +192,33 @@ for (const width of WIDTHS) {
   await p.ev(`document.getElementById('hero').scrollIntoView()`);
   await p.click('.layer-btn:nth-child(3)'); await sleep(500);
   R.layerFilter = await p.ev(`({badge:document.querySelector('.hud-badge').textContent.trim(),pressed:[...document.querySelectorAll('.layer-btn')].map(b=>b.getAttribute('aria-pressed')).join(','),hidden:[...document.querySelectorAll('.scene-layer')].map(g=>g.dataset.hidden).join(',')})`);
+  // ---- regression guards for defects found in the Milestone 3 prototype-parity review
+  R.headerGlass = await p.ev(`(()=>{const b=getComputedStyle(document.querySelector('.precision-rail'),'::before');return {backdropFilter:b.backdropFilter,background:b.backgroundColor}})()`);
+  await p.ev(`document.querySelector('.viewport-canvas-container').scrollIntoView({block:'center',behavior:'instant'})`); await sleep(300);
+  const stage = await p.rect('.viewport-canvas-container');
+  const sig = () => p.ev(`[...document.querySelectorAll('.scene-svg polygon')].slice(0,8).map(x=>x.getAttribute('points')).join('|')`);
+  const cx = stage.x + stage.w / 2, cy = stage.y + stage.h / 2;
+  const sigRest = await sig();
+  await p.mouse('mouseMoved', cx, cy); await p.mouse('mousePressed', cx, cy);
+  for (let i = 1; i <= 8; i++) { await p.mouse('mouseMoved', cx + i * 10, cy); await sleep(30); }
+  const sigDragging = await sig();
+  await p.mouse('mouseReleased', cx + 80, cy); await sleep(300);
+  R.heroDrag = { rotatedWhileDragging: sigDragging !== sigRest, cursorGrab: await p.ev(`getComputedStyle(document.querySelector('.viewport-canvas-container')).cursor`), touchAction: await p.ev(`getComputedStyle(document.querySelector('.viewport-canvas-container')).touchAction`) };
+  if (width >= 1024) {
+    await p.mouse('mouseMoved', stage.x + stage.w * 0.1, cy); await sleep(1200); const sigLeft = await sig();
+    await p.mouse('mouseMoved', stage.x + stage.w * 0.9, cy); await sleep(1200); const sigRight = await sig();
+    R.heroTilt = { tiltsWithCursor: sigLeft !== sigRight };
+  }
   await p.ev(`document.getElementById('systems-topology').scrollIntoView()`); await sleep(300);
+  R.inspectorExtras = await p.ev(`(()=>{const t1=document.querySelector('.live-clock')?.textContent||'';const c1=document.querySelector('.readout-code-block code')?.textContent||'';return {clock:t1,codeLines:c1.split('\\n').length,caption:document.querySelector('.code-comment')?.textContent}})()`);
+  await sleep(1300);
+  R.inspectorExtras.clockAfter1s = await p.ev(`document.querySelector('.live-clock')?.textContent||''`);
+  R.inspectorExtras.clockTicks = R.inspectorExtras.clock !== R.inspectorExtras.clockAfter1s;
+  R.inspectorExtras.clockFormatOk = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} UTC\+6$/.test(R.inspectorExtras.clockAfter1s);
   await p.click('.interactive-node:nth-of-type(3)'); await sleep(300);
   R.inspector = await p.ev(`({id:document.querySelector('.readout-id').textContent,pressedNodes:[...document.querySelectorAll('.interactive-node')].map(b=>b.getAttribute('aria-pressed')).join(','),pressedViews:[...document.querySelectorAll('.console-tab')].map(b=>b.getAttribute('aria-pressed')).join(','),footer:document.querySelector('.readout-footer').textContent.trim(),usedIn:[...document.querySelectorAll('.used-in-link')].map(a=>a.textContent.trim())})`);
   await p.click('.console-tab:nth-child(3)'); await sleep(300);
+  R.inspectorExtras.codePresentAfterSelect = await p.ev(`document.querySelector('.readout-code-block code')?.textContent`) !== '';
   R.inspectorView3 = await p.ev(`({id:document.querySelector('.readout-id').textContent,pressedViews:[...document.querySelectorAll('.console-tab')].map(b=>b.getAttribute('aria-pressed')).join(',')})`);
 
   // ---- contact form: real input, invalid then keyboard focus

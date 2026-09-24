@@ -1,4 +1,5 @@
 import type { Education, Experience, Metric } from '@/types/content';
+import { PUBLIC_REPO_COUNT } from './profile';
 import { projects } from './projects';
 
 /** Source: docs/CONTENT.md §4 (Verified Professional Experience). */
@@ -41,6 +42,6 @@ export const education: Education = {
 export const heroMetrics: readonly Metric[] = [
   { value: '5 MO', label: 'ENGINEERING INTERNSHIP // 2023' },
   { value: education.cgpa, label: 'CGPA // B.SC. SWE (NSTU)' },
-  { value: '39', label: 'PUBLIC GITHUB REPOSITORIES' },
+  { value: String(PUBLIC_REPO_COUNT), label: 'PUBLIC GITHUB REPOSITORIES' },
   { value: String(projects.length), label: 'FEATURED SYSTEMS BELOW' },
 ];

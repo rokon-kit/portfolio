@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { CornerFrame } from '@/components/ui/CornerFrame';
+import { LiveClock } from '@/components/ui/LiveClock';
+import { profile } from '@/content/profile';
 import type { Layer, LayerId, LayerView } from '@/types/content';
 
 interface LayerInspectorProps {
@@ -25,7 +27,6 @@ export function LayerInspector({ layers, views, projects }: LayerInspectorProps)
   const active = layers[activeIndex];
   if (!active) return null;
 
-  const activeView = views.find((view) => view.id === active.view);
   const projectTitle = (slug: string) => projects.find((project) => project.slug === slug)?.title;
 
   return (
@@ -35,7 +36,7 @@ export function LayerInspector({ layers, views, projects }: LayerInspectorProps)
       <div className="console-controls-bar">
         <div className="console-title-group">
           <span className="console-dot" aria-hidden="true" />
-          <span className="console-heading">FULL-STACK LAYER INSPECTOR</span>
+          <span className="console-heading">ARCHITECTURE TELEMETRY MATRIX</span>
         </div>
 
         <div className="console-tabs" role="group" aria-label="Jump to a view">
@@ -57,7 +58,7 @@ export function LayerInspector({ layers, views, projects }: LayerInspectorProps)
         <div className="telemetry-screen">
           <div className="node-tree-panel">
             <span className="panel-tag" id="layer-list-label">
-              {'// SYSTEM LAYERS (SELECT A LAYER TO INSPECT)'}
+              {'// SYSTEM LAYERS (SELECT NODE TO INSPECT)'}
             </span>
             <div role="group" aria-labelledby="layer-list-label" className="node-tree-panel">
               {layers.map((layer) => (
@@ -80,8 +81,8 @@ export function LayerInspector({ layers, views, projects }: LayerInspectorProps)
 
           <div className="node-readout-panel">
             <div className="readout-header">
-              <span className="readout-label">{'// LAYER SPECIFICATION'}</span>
-              <span className="readout-id">LAYER: {active.shortName}</span>
+              <span className="readout-label">{'// NODE SPECIFICATION INSPECTOR'}</span>
+              <span className="readout-id">NODE: {active.shortName}</span>
             </div>
 
             <div className="readout-content">
@@ -106,13 +107,20 @@ export function LayerInspector({ layers, views, projects }: LayerInspectorProps)
                   ))}
                 </div>
               </div>
+
+              <div className="readout-code-block">
+                <span className="code-comment">{active.illustration.caption}</span>
+                <pre>
+                  <code>{active.illustration.code}</code>
+                </pre>
+              </div>
             </div>
 
             <div className="readout-footer">
               <span>
                 LAYER {String(activeIndex + 1).padStart(2, '0')} / {String(layers.length).padStart(2, '0')}
               </span>
-              <span>{activeView?.label ?? ''}</span>
+              <LiveClock timeZone={profile.location.timeZoneId} label={profile.location.timezone} />
             </div>
           </div>
         </div>

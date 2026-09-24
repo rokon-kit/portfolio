@@ -1,7 +1,8 @@
 /*
  * ARCHITECTURE INSPECTOR — layer list + readout panel.
- * Ported from prototype/styles.css. Layers are real <button>s; the prototype's
- * fabricated code block is replaced by "used in" links to the case studies.
+ * Ported from prototype/styles.css. Layers are real <button>s. The prototype's
+ * "verified" code block is restored as a generic, captioned illustration, and the
+ * readout gains "used in" links to the case studies.
  */
 
 .topology-console-deck {
@@ -270,6 +271,49 @@
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   color: var(--color-text-dim);
+}
+
+/* Code-style illustration (restored from the approved prototype; content is generic and captioned). */
+.readout-code-block {
+  background: var(--color-code);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-top: 10px;
+}
+
+.code-comment {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  margin-bottom: 6px;
+}
+
+.readout-code-block pre {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.readout-code-block code {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-accent-cyan);
+  line-height: 1.5;
+}
+
+.live-clock {
+  display: inline-block;
+  min-width: 26ch;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 767px) {
+  .live-clock {
+    min-width: 0;
+  }
 }
 
 @media (max-width: 1023px), (pointer: coarse) {

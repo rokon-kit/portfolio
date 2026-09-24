@@ -29,6 +29,8 @@ export interface Location {
   readonly city: string;
   readonly country: string;
   readonly timezone: string;
+  /** IANA zone used for the live clock. */
+  readonly timeZoneId: string;
   readonly latitude: number;
   readonly longitude: number;
 }
@@ -186,6 +188,8 @@ export interface Layer {
   /** Short name used in the inspector header. */
   readonly shortName: string;
   readonly readouts: readonly LayerReadout[];
+  /** Generic, clearly captioned illustration of the layer — not code from a specific project. */
+  readonly illustration: { readonly caption: string; readonly code: string };
   /** Slugs of projects (see `projects`) that use this layer. */
   readonly usedIn: readonly string[];
 }

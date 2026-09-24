@@ -1,4 +1,5 @@
 import type { ContactDetails, InquiryOption } from '@/types/content';
+import { PUBLIC_REPO_COUNT } from './profile';
 
 /**
  * Contact channels. Source: docs/CONTENT.md §1 — email, LinkedIn, GitHub and phone
@@ -28,7 +29,7 @@ export const contact: ContactDetails = {
       id: 'github',
       icon: 'gh',
       title: 'GITHUB REPOSITORIES',
-      value: 'github.com/rokon-rabbi',
+      value: `github.com/rokon-rabbi (${PUBLIC_REPO_COUNT} Repos)`,
       href: 'https://github.com/rokon-rabbi',
       external: true,
     },
@@ -42,8 +43,8 @@ export const contact: ContactDetails = {
     },
   ],
   resume: {
-    title: 'RESUME (PDF)',
-    description: 'Career history, education and technical skills.',
+    title: 'PROFESSIONAL CV',
+    description: 'Comprehensive career history, NSTU degree & technical skills.',
     href: 'https://drive.google.com/file/d/1bnyD5ny00ZIAhz9msLT40ACmzdwyeXQW/view?usp=sharing',
   },
 };

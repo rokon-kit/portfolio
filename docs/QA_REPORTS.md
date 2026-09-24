@@ -145,3 +145,38 @@ Also: case-study page (390 & 1440) and the 404 page — axe 0 violations, no ove
 - M2 contrast figures were inaccurate; corrected in `docs/DESIGN_SYSTEM.md` (ADR-010).
 - M2 screenshots were not committed; M3 evidence is.
 
+### Milestone 3 — Prototype-Parity Regression Review
+- **Date:** 2026-09-24
+- **Reviewer:** Claude Code (Sonnet 5)
+- **Status:** Verified & Complete (Awaiting Owner Review)
+- **Trigger:** owner request to review the Milestone 3 implementation against the approved M2 prototype, find regressions introduced during the handoff/implementation, fix them without rebuilding, and re-verify in the browser.
+- **Evidence:** `docs/qa/m3-review/` — `parity/` (prototype-left / app-right composites at 11 scroll anchors × 1440 & 390px, plus the header-glass comparison), `proof-hero-rotated-1440.png`, `audit/` (final screenshots, drawer / form states, `audit-results.json`). Reproduce the diffs with `scripts/qa/prototype-parity.mjs`.
+
+**Method**
+1. Computed-style and geometry diff of 143 selectors shared by prototype and app at 1440 / 768 / 390px (typography, colour, spacing, borders, display, gaps, radii, geometry).
+2. Hover / focus states forced through the DevTools protocol for 17 interactive selectors, plus pseudo-elements (`body::before`, corner crosshairs, header `::before`).
+3. Side-by-side captures at identical scroll anchors (top, hero lower, works, each dossier, architecture, contact, footer) at 1440 and 390px, reviewed by eye.
+4. Functional inventory of every prototype interaction against the app.
+
+**Result of the style diff:** typography (family, size, weight, line-height, letter-spacing), padding, margins, radii and hover/focus states show **no unintended drift**. All remaining style differences were deliberate (see ADR-015).
+
+**Regressions found and fixed**
+
+| # | Regression | Root cause | Fix | Guard |
+|---|---|---|---|---|
+| R1 | Frosted-glass header lost — page content showed through the rail unblurred | Tailwind's CSS optimizer (Lightning CSS) collapsed `backdrop-filter` + `-webkit-backdrop-filter` into the prefixed one only, which Chrome ignores (computed `backdrop-filter: none`) | Declare prefixed first, standard last; verified in the emitted CSS | Audit asserts computed `backdrop-filter` ≠ `none` at every width |
+| R2 | Hero model lost drag-to-rotate, touch drag and cursor tilt (prototype `initIsometricCanvas`) | Replaced the canvas with a static SVG and dropped the interaction | Restored on the SVG model: pure `buildScene(rotation)` projection, pointer-event drag (`touch-action: pan-y` so vertical scroll still works), mouse-only tilt while on screen, eased return, rAF loop only while moving, reduced-motion = no tilt/easing | Audit: real mouse drag rotates the model at all widths; tilt at ≥1024px; real **touch** drag rotates it and does not scroll the page |
+| R3 | Hero summary lost "enterprise" | Unnecessary copy edit (the word is supported by CONTENT.md) | Restored approved sentence | — |
+| R4 | Contact section lost the approved "TRANSMISSION" voice, the "(39 Repos)" detail, the approved intro and CV-plate wording | Over-editing plain wording that carried no false claim | Restored labels, placeholder, intro, "(39 Repos)" (shared `PUBLIC_REPO_COUNT`), "PROFESSIONAL CV" / "DOWNLOAD PDF"; kept honest claims-free text (see ADR-015) | Content-integrity guard |
+| R5 | Architecture readout had an empty band; the prototype's code-block element and live timestamp were missing | Removed the fabricated "verified" code and clock wholesale instead of replacing them honestly | Code block restored with generic snippets captioned "Illustrative example"; real ticking Dhaka clock (`useSyncExternalStore`, no hydration mismatch); prototype wording ("NODE SPECIFICATION INSPECTOR", "SELECT NODE TO INSPECT", "ARCHITECTURE TELEMETRY MATRIX", "…FULL-STACK TOPOLOGY") | Audit: clock ticks in `YYYY-MM-DD HH:MM:SS UTC+6`, code block present after selection |
+| R6 | Hero callouts dimmed when a layer was filtered | Added behaviour the prototype did not have | Reverted to always-visible callouts | — |
+| R7 | Curly quotes, reworded drawer label ("Full-Stack Layers") | Typographic drift | Straight quotes as approved; drawer label "Systems Topology Graph" | — |
+| R8 | Resume plate: "Download PDF" wrapped below the text instead of sitting to its right | `flex-wrap: wrap` added during the port | Single row (text shrinks, button fixed) | Visual parity capture |
+
+**Verification (final build, production, headless Chrome, 320 / 390 / 768 / 1024 / 1440px)**
+- `npm run verify`: typecheck 0 errors, lint 0 errors, content guard pass, 8/8 tests, build pass.
+- Every width: hydrated; 0 horizontal overflow; 0 axe violations; 0 hit targets under minimum; 0 real contrast failures (of 311–329 text nodes); 0 console messages / exceptions / failed requests / HTTP ≥400; regression guards R1, R2, R5 all pass; drawer focus trap and Escape/focus return still pass; no-JS render intact; internal links 200; case-study and 404 pages 0 axe violations.
+
+**Not restored, by decision:** the prototype's ambient "breathing" drift (imperceptible; adds a perpetual animation loop) and its "60 FPS" HUD badge (a hard-coded, unmeasured claim).
+
+**Not tested / limitations:** touch drag was verified with emulated touch events, not a physical device; animation timing/easing was ported by constants, not measured against the prototype frame by frame; Firefox/Safari, screen readers, Lighthouse/Core Web Vitals remain untested (Milestone 9).

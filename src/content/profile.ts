@@ -1,5 +1,11 @@
 import type { NavItem, Profile } from '@/types/content';
 
+/**
+ * Public GitHub repositories, as recorded in the 2026-09-24 audit (docs/CONTENT.md §1).
+ * Hard-coded, so update it when the count changes.
+ */
+export const PUBLIC_REPO_COUNT = 39;
+
 /** Source: docs/CONTENT.md §1 and the approved Milestone 2 hero copy. */
 export const profile: Profile = {
   name: 'Md. Rokonuzzaman',
@@ -9,6 +15,7 @@ export const profile: Profile = {
     city: 'Dhaka',
     country: 'Bangladesh',
     timezone: 'UTC+6',
+    timeZoneId: 'Asia/Dhaka',
     latitude: 23.8103,
     longitude: 90.4125,
   },
@@ -23,7 +30,7 @@ export const profile: Profile = {
   summary: [
     'I am ',
     { text: 'Md. Rokonuzzaman', tone: 'strong' },
-    ', a full-stack software engineer based in Dhaka, Bangladesh. With a formal Software Engineering degree from NSTU, I build end-to-end digital architectures—from type-safe backends in ',
+    ', a full-stack software engineer based in Dhaka, Bangladesh. With a formal Software Engineering degree from NSTU, I build end-to-end digital architectures—from type-safe enterprise backends in ',
     { text: 'Java & Spring Boot', tone: 'strong' },
     ' to precision frontends in ',
     { text: 'TypeScript, React & Next.js', tone: 'strong' },
@@ -54,6 +61,6 @@ export const navItems: readonly NavItem[] = [
   { id: 'hero', index: '01', label: 'Overview', drawerLabel: 'Overview & Blueprint' },
   { id: 'selected-works', index: '02', label: 'Works', drawerLabel: 'Selected Works (Dossiers)' },
   { id: 'background', index: '03', label: 'Background', drawerLabel: 'Experience & Education' },
-  { id: 'systems-topology', index: '04', label: 'Architecture', drawerLabel: 'Full-Stack Layers' },
+  { id: 'systems-topology', index: '04', label: 'Architecture', drawerLabel: 'Systems Topology Graph' },
   { id: 'contact-dossier', index: '05', label: 'Contact', drawerLabel: 'Contact & Direct Connection' },
 ];

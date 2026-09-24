@@ -15,9 +15,9 @@ export function Contact() {
           index="05"
           label="DIRECT CONNECTION // CONTACT DOSSIER"
           headingId="contact-heading"
-          headline={['Let’s build something ', { text: 'exceptional', tone: 'italic' }, ' together.']}
+          headline={["Let's build something ", { text: 'exceptional', tone: 'italic' }, ' together.']}
         >
-          Whether you are looking for a full-stack engineer, want to talk through an architecture, or are
+          Whether you are looking for a dedicated full-stack engineer, discussing architectural design, or
           collaborating on ambitious digital tools, my inbox is open.
         </SectionHeader>
 
@@ -27,7 +27,7 @@ export function Contact() {
           <div className="contact-split-grid">
             <div className="contact-channels-col">
               <div className="channels-header">
-                <span className="channel-code">{'// CONTACT CHANNELS'}</span>
+                <span className="channel-code">{'// TRANSMISSION CHANNELS'}</span>
                 <span className="channel-loc">{location.city.toUpperCase()}, {location.country.toUpperCase()}</span>
               </div>
 
@@ -57,7 +57,7 @@ export function Contact() {
                   <span className="plate-desc">{contact.resume.description}</span>
                 </div>
                 <ButtonLink href={contact.resume.href} variant="resume">
-                  <span>OPEN RESUME</span>
+                  <span>DOWNLOAD PDF</span>
                   <span aria-hidden="true">↓</span>
                 </ButtonLink>
               </div>
@@ -65,7 +65,7 @@ export function Contact() {
 
             <div className="contact-form-col">
               <div className="form-header">
-                <span className="form-code">{'// MESSAGE FORM'}</span>
+                <span className="form-code">{'// DIRECT TRANSMISSION FORM'}</span>
                 <span className="form-status">OPENS YOUR EMAIL APP</span>
               </div>
               <ContactForm recipient={contact.email} />

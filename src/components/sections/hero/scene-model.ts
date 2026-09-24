@@ -41,9 +41,16 @@ interface BoxSpec {
 const COS_30 = Math.cos(Math.PI / 6);
 const SIN_30 = Math.sin(Math.PI / 6);
 
-/** Standard isometric projection of a point in world space (x, y ground plane, z up). */
-function project(x: number, y: number, z: number): Point {
-  return { x: (x - y) * COS_30, y: (x + y) * SIN_30 - z };
+/**
+ * Standard isometric projection of a point in world space (x, y ground plane, z up),
+ * after rotating the ground plane by `rotation` radians about the vertical axis.
+ */
+function project(x: number, y: number, z: number, rotation: number): Point {
+  const cos = Math.cos(rotation);
+  const sin = Math.sin(rotation);
+  const rx = x * cos - y * sin;
+  const ry = x * sin + y * cos;
+  return { x: (rx - ry) * COS_30, y: (rx + ry) * SIN_30 - z };
 }
 
 const CYAN = 'var(--color-accent-cyan)';
@@ -90,23 +97,23 @@ function toPoints(points: readonly Point[]): string {
   return points.map((p) => `${round(p.x)},${round(p.y)}`).join(' ');
 }
 
-function buildBox(spec: BoxSpec): SceneBox {
+function buildBox(spec: BoxSpec, rotation: number): SceneBox {
   const hw = spec.width / 2;
   const hd = spec.depth / 2;
   const cx = ORIGIN.x + spec.offsetX;
   const place = (p: Point): Point => ({ x: cx + p.x, y: ORIGIN.y + p.y });
 
   const bottom = [
-    project(-hw, -hd, spec.z),
-    project(hw, -hd, spec.z),
-    project(hw, hd, spec.z),
-    project(-hw, hd, spec.z),
+    project(-hw, -hd, spec.z, rotation),
+    project(hw, -hd, spec.z, rotation),
+    project(hw, hd, spec.z, rotation),
+    project(-hw, hd, spec.z, rotation),
   ].map(place);
   const top = [
-    project(-hw, -hd, spec.z + spec.height),
-    project(hw, -hd, spec.z + spec.height),
-    project(hw, hd, spec.z + spec.height),
-    project(-hw, hd, spec.z + spec.height),
+    project(-hw, -hd, spec.z + spec.height, rotation),
+    project(hw, -hd, spec.z + spec.height, rotation),
+    project(hw, hd, spec.z + spec.height, rotation),
+    project(-hw, hd, spec.z + spec.height, rotation),
   ].map(place);
 
   const [b1, b2, b3, b4] = bottom;
@@ -133,7 +140,13 @@ function buildBox(spec: BoxSpec): SceneBox {
   };
 }
 
-export const SCENE_BOXES: readonly SceneBox[] = BOXES.map(buildBox);
+/** Builds every box at the given rotation (radians). Pure and cheap: ~64 projected points. */
+export function buildScene(rotation: number): readonly SceneBox[] {
+  return BOXES.map((spec) => buildBox(spec, rotation));
+}
+
+/** Server-rendered default view (no rotation). */
+export const SCENE_BOXES: readonly SceneBox[] = buildScene(0);
 
 export const SCENE_FLOOR = {
   ring: { cx: ORIGIN.x, cy: ORIGIN.y + 80, r: 140 },

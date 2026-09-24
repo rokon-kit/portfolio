@@ -260,3 +260,29 @@ Each decision follows the lightweight ADR structure:
 - **Alternatives Considered:**
   - *Disabled form:* rejected — removes an approved element.
   - *Third-party form service now:* rejected — adds a dependency and data-handling decision before hosting is chosen.
+
+---
+
+## ADR-015: Prototype-Parity Policy — What Is Restored vs Deliberately Changed
+
+- **Date:** 2026-09-24
+- **Status:** Accepted
+- **Context:**
+  A parity review of the Milestone 3 app against the approved prototype (QA_REPORTS.md → "Prototype-Parity Regression Review") found regressions that were the result of over-editing, a build-pipeline side effect, or removing a feature instead of replacing its false content. The owner requires the approved design and behaviour to be preserved.
+- **Decision:**
+  1. **Approved visuals, wording and behaviour are the default and are restored** unless a specific rule forces a change. Removing something because it is harder to rebuild is not a valid reason.
+  2. **A change is allowed only for one of these reasons, and must be listed here:** (a) the prototype asserted something unverifiable or false (AGENTS.md rule 4); (b) accessibility (WCAG 2.1 AA, ≥44px targets); (c) a prototype defect (overflow, clipping, class collision); (d) a genuinely missing required content item.
+  3. **Where a false element carried approved design value, keep the element and replace only its content honestly** (e.g. the code block is kept with generic snippets captioned "Illustrative example"; the timestamp is kept with the real time).
+  4. **Deliberate deviations from the prototype (all others are regressions):**
+     - Removed: "60 FPS" / "ENGINE: R3F SIMULATOR" HUD text; "15+ projects" and "100% authentic data" tiles; "EST. 2018"; "DEPLOYED ARCHITECTURE"; latency, version and guarantee claims; "verified" code/schema; "ENCRYPTION: SSL / TLS" and "Zero spam policy"; "WhatsApp"; "VERIFIED" on the CV plate; "TELEMETRY LINK: STABLE"; "SYS: SPEC V2.4-PROTOTYPE" (now the real time zone).
+     - Copy aligned to `docs/CONTENT.md`: project titles, challenge/approach text, impact readouts (labelled "HUMAN DIMENSION"), Works headline/intro, "API layer" (no documented API gateway), "Persistence" tab (no performance data exists).
+     - Added: Background section and 5-item navigation (required by CONTENT.md); "Case study" links; a scrim behind the mobile drawer; a swipe hint on scrollable diagrams; `mailto:` handoff with the button "TRANSMIT VIA EMAIL".
+     - Accessibility: ≥44px targets on touch/narrow layouts; 16px form text (prevents iOS zoom); stronger resting borders on controls (WCAG 1.4.11); `--color-text-dim` (ADR-010); toggle groups instead of ARIA tabs (ADR-013).
+     - Prototype defects fixed: tablet header overflow, clipped mobile hero scene, mobile contact overflow, `.plate-title` collision, orphaned ribbon brackets, dead "Inspect data schema" button.
+  5. **Build-pipeline rule:** vendor-prefixed and standard declarations are written prefixed-first, and critical properties (`backdrop-filter`) are asserted on the *emitted* CSS by the browser audit, because the optimizer can silently drop declarations.
+- **Consequences:**
+  - *Positive:* A clear test for every future change; regressions are now caught by `scripts/qa/prototype-parity.mjs` and the audit's regression guards.
+  - *Negative:* A few approved elements (code block, clock) now exist mainly for design fidelity; their content must stay honest.
+- **Alternatives Considered:**
+  - *Leave the removed elements out:* rejected — it left visible gaps and departed from the approved composition.
+  - *Restore the original false content:* rejected — violates AGENTS.md rule 4.

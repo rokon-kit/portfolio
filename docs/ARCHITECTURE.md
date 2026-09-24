@@ -96,7 +96,7 @@ rokon-portfolio/
 ├── public/                        # favicon.svg, monogram.svg
 ├── scripts/
 │   ├── check-content.mjs          # content-integrity guard (npm run check:content)
-│   └── qa/browser-audit.mjs       # reusable real-input browser audit (see QA_REPORTS.md)
+│   └── qa/                        # browser-audit.mjs (real-input audit + regression guards) · prototype-parity.mjs (style diff vs prototype)
 ├── package.json · tsconfig.json · next.config.ts · eslint.config.mjs · postcss.config.mjs · .env.example
 └── src/
     ├── app/                       # App Router
@@ -111,7 +111,7 @@ rokon-portfolio/
     ├── types/content.ts           # domain types for all content
     ├── components/
     │   ├── layout/                # Header (server) · HeaderNav (client: nav + drawer) · Footer · SkipLink
-    │   ├── ui/                    # Button · CornerFrame · Monogram · RichText · SectionHeader · SchematicPlate
+    │   ├── ui/                    # Button · CornerFrame · LiveClock · Monogram · RichText · SectionHeader · SchematicPlate
     │   ├── sections/              # Hero (+ HeroViewport client, scene-model) · works/ · Background · Topology (+ LayerInspector client) · Contact (+ ContactForm client)
     │   ├── figures/               # per-project SVG schematics + shared primitives
     │   └── seo/JsonLd.tsx
@@ -121,7 +121,8 @@ rokon-portfolio/
 
 **Conventions**
 - Content is data (`src/content`); components render it. Facts must be traceable to `docs/CONTENT.md`; `npm run check:content` blocks known-bad claim patterns.
-- Server Components by default. Client components (`'use client'`): `HeaderNav`, `HeroViewport`, `LayerInspector`, `ContactForm`, and the `useActiveSection` hook — each needs state or browser APIs.
+- Server Components by default. Client components (`'use client'`): `HeaderNav`, `HeroViewport`, `LayerInspector`, `ContactForm`, `LiveClock`, and the `useActiveSection` hook — each needs state or browser APIs.
+- `HeroViewport` renders the resting view on the server, then progressively enhances it: pointer drag / touch drag rotate the model (`buildScene(rotation)` in `scene-model.ts`), the mouse tilts it while on screen, and it eases back. The rAF loop runs only while moving; reduced motion disables tilt and easing.
 - Everything is prerendered; the site works with JavaScript disabled (all sections render, all layers visible, links function).
 - Every interactive control is a native element (`a`, `button`, `input`); state is exposed with `aria-pressed`, `aria-current`, `aria-expanded`, and polite live regions.
 - Colour and type come from tokens; SVG figures use design-system classes/variables, never hard-coded hex.

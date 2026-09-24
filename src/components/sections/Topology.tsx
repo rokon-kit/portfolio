@@ -11,7 +11,7 @@ export function Topology() {
       <div className="section-container">
         <SectionHeader
           index="04"
-          label="INTERACTIVE VISUALIZATION // FULL-STACK LAYERS"
+          label="INTERACTIVE VISUALIZATION // FULL-STACK TOPOLOGY"
           headingId="topology-heading"
           headline={['Anatomy of a complete ', { text: 'full-stack', tone: 'italic' }, ' architecture.']}
         >

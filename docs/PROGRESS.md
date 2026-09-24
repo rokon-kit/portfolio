@@ -2,7 +2,7 @@
 
 ## 1. Project Overview
 - **Project:** Md. Rokonuzzaman Portfolio ("The Human Side of Engineering")
-- **Status:** Milestone 3 complete and verified — **awaiting owner review**
+- **Status:** Milestone 3 complete and verified, including a prototype-parity regression review — **awaiting owner review**
 - **Current milestone:** Milestone 3 — Production Application Foundation (done)
 - **Next milestone:** Milestone 4 — Signature Three.js Experience (**not started**; begins only on explicit request)
 
@@ -17,7 +17,7 @@ Numbering follows the owner's Milestone 3 handoff and is recorded in ADR-007. It
 | **M0** | Governance, Permanent Rules & Documentation Setup | **Completed** | `2755362` | 2026-09-24 |
 | **M1** | Creative Research, Content Discovery & 3 Identity Concepts | **Completed** | `dee5aa3` | 2026-09-24 |
 | **M2** | Design System, Custom Monogram & High-Fidelity Prototypes | **Completed** | `41cec5f` | 2026-09-24 |
-| **M3** | Production Application Foundation | **Completed — awaiting review** | tag `milestone-3` (see `git log`) | 2026-09-24 |
+| **M3** | Production Application Foundation | **Completed — awaiting review** | `1797edf` (tag `milestone-3`) + parity-review fixes (tag `milestone-3-parity-review`) | 2026-09-24 |
 | **M4** | Signature Three.js Experience | Planned | - | - |
 | **M5** | Cinematic Hero Integration | Planned | - | - |
 | **M6** | Selected Work & Project Case Studies | Planned | - | - |
@@ -43,11 +43,14 @@ The Next.js application now exists and reproduces the approved Living Blueprint 
 
 Approved-token amendment: `--color-text-dim` `#64748B` → `#7C8BA1` to meet WCAG AA (ADR-010).
 
+### Prototype-parity regression review (follow-up, same milestone)
+A computed-style/state/pseudo-element diff plus side-by-side captures found and fixed eight regressions (details and evidence in `docs/QA_REPORTS.md` and `docs/qa/m3-review/`): the frosted-glass header (stripped by the CSS optimizer), the hero model's drag / touch / cursor-tilt interaction, restored approved copy in the hero and contact sections, the architecture readout's code-block element and live timestamp (now honest content), callout behaviour, quote/label drift, and the resume-plate layout. ADR-015 defines what is restored versus deliberately changed. New guards: the audit asserts each fix, and `scripts/qa/prototype-parity.mjs` reproduces the diff.
+
 ---
 
 ## 4. Verification Summary (Milestone 3)
 
-Full detail, method and limitations: `docs/QA_REPORTS.md` → Milestone 3. Evidence: `docs/qa/m3/`.
+Full detail, method and limitations: `docs/QA_REPORTS.md` → Milestone 3 and Milestone 3 — Prototype-Parity Regression Review. Evidence: `docs/qa/m3/` (initial) and `docs/qa/m3-review/` (final; the figures below are from the final audit).
 
 | Check | Result |
 |---|---|
@@ -57,7 +60,8 @@ Full detail, method and limitations: `docs/QA_REPORTS.md` → Milestone 3. Evide
 | `npm test` | 8/8 pass |
 | `npm run build` | Pass; 8 routes prerendered as static |
 | Browser, production build, 320 / 390 / 768 / 1024 / 1440 px | Hydrated; **0** horizontal overflow; **0** axe violations; **0** hit targets under minimum; **0** real contrast failures (of ~311 text nodes); **0** console messages / exceptions / failed requests |
-| Real-input interactions | Skip link, nav + scroll-spy, drawer (focus trap, Escape, scroll lock, link close, scrim close), hero layer filter, inspector + view sync, "used in" navigation, form validation, case-study pager, 404 |
+| Real-input interactions | Skip link, nav + scroll-spy, drawer (focus trap, Escape, scroll lock, link close, scrim close), hero layer filter, **hero drag / touch drag / cursor tilt**, inspector + view sync + code block + live clock, "used in" navigation, form validation, case-study pager, 404 |
+| Prototype parity (143 selectors × 3 widths, states, pseudo-elements, 22 side-by-side captures) | No unintended style drift after fixes; all remaining differences listed in ADR-015 |
 | Reduced motion; JS disabled | Honoured; SSR content renders |
 | Links | Internal routes all 200; all in-page anchors resolve; GitHub repos, profile and resume link 200 |
 
@@ -67,7 +71,7 @@ Full detail, method and limitations: `docs/QA_REPORTS.md` → Milestone 3. Evide
 
 **By design (later milestones)**
 - Hero scene is a static SVG stand-in; the real React Three Fiber scene is Milestone 4 (this SVG becomes its WebGL-unavailable fallback).
-- No GSAP or scroll choreography (Milestone 5 / 8).
+- No GSAP or scroll choreography (Milestone 5 / 8). The hero's drag/tilt is plain pointer-event code on the SVG model; the prototype's imperceptible ambient "breathing" drift was not restored.
 - Case-study pages contain only documented content; depth, trade-offs and more projects (Scribble, Tier-2) are Milestone 6 / 7.
 - Contact form hands off to the visitor's email app; a real submission pipeline is Milestone 7.
 - No Open Graph image, apple-touch icon or PNG/ICO favicons (Milestone 10).
@@ -100,12 +104,12 @@ Full detail, method and limitations: `docs/QA_REPORTS.md` → Milestone 3. Evide
 
 ## 6. Completed Documentation & Asset Touchpoints
 - `docs/DESIGN_SYSTEM.md`: tokens and components (corrected in M3 — see ADR-010).
-- `docs/DESIGN_DECISIONS.md`: ADR-001 through ADR-014.
+- `docs/DESIGN_DECISIONS.md`: ADR-001 through ADR-015.
 - `docs/CONTENT.md`: verified career history and project catalog (source of truth for all copy).
 - `docs/ARCHITECTURE.md`: target architecture plus the as-built M3 structure.
 - `docs/QA_REPORTS.md`: verification logs through Milestone 3.
 - `docs/CLAUDE_HANDOFF.md`: Antigravity → Claude Code handoff audit.
-- `docs/qa/m3/`: screenshots, prototype baseline, machine-readable audit results.
+- `docs/qa/m3/`: initial M3 screenshots, prototype baseline, audit results. `docs/qa/m3-review/`: parity composites, final audit and screenshots after the regression review.
 - `public/favicon.svg`, `public/monogram.svg`; `prototype/` retained unchanged as the visual reference.
 
 ---

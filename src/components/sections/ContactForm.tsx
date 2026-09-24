@@ -54,7 +54,7 @@ export function ContactForm({ recipient }: ContactFormProps) {
       <div className="form-row">
         <div className="form-group">
           <label htmlFor={id('name')} className="form-label">
-            YOUR NAME <span className="req" aria-hidden="true">*</span>
+            SENDER NAME <span className="req" aria-hidden="true">*</span>
           </label>
           <input
             id={id('name')}
@@ -77,7 +77,7 @@ export function ContactForm({ recipient }: ContactFormProps) {
 
         <div className="form-group">
           <label htmlFor={id('email')} className="form-label">
-            YOUR EMAIL <span className="req" aria-hidden="true">*</span>
+            WORK EMAIL <span className="req" aria-hidden="true">*</span>
           </label>
           <input
             id={id('email')}
@@ -114,14 +114,14 @@ export function ContactForm({ recipient }: ContactFormProps) {
 
       <div className="form-group">
         <label htmlFor={id('message')} className="form-label">
-          MESSAGE <span className="req" aria-hidden="true">*</span>
+          TRANSMISSION CONTENT <span className="req" aria-hidden="true">*</span>
         </label>
         <textarea
           id={id('message')}
           name="message"
           rows={5}
           className="form-textarea"
-          placeholder="Tell me about the role, the team, or the problem you are working on…"
+          placeholder="Detail your project requirements, team context, or engineering challenge..."
           required
           aria-required="true"
           aria-invalid={errors.message ? true : undefined}
@@ -136,7 +136,7 @@ export function ContactForm({ recipient }: ContactFormProps) {
 
       <div className="form-actions">
         <button type="submit" className="btn-submit-transmission">
-          <span className="btn-label">COMPOSE EMAIL</span>
+          <span className="btn-label">TRANSMIT VIA EMAIL</span>
           <span className="btn-arrow" aria-hidden="true">→</span>
         </button>
         <span className="form-disclaimer">
